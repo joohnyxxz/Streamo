@@ -1,183 +1,278 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta http-equiv="refresh" content="">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="meu_icone.png" type="image/png">
-    <title>Streamo</title>
-    <style>
-        * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="imgs/meu_icone.png" type="image/png">
+  <title>Streamo</title>
+  <style>
+    * { 
+        margin: 0; padding: 0; box-sizing: border-box; 
+    }
 
-        body {
-        background-color: #0f0f0f;
-        color: #0000FF;
-        margin: 0;
-        font-family: Arial, sans-serif;
-        }
+    body {
+      background-color: #0f0f0f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+    }
 
-        .streamo{
-        background-color: black;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        top: 0;
-        width: 100%;
-        height: 60px;
-        }
+    a { 
+      text-decoration: none; color: inherit; 
+    }
 
-        table {
-        margin: 0 auto;
-        margin-top: 5%;
-        width: 90%;
-        }
+    a:hover { 
+      opacity: 0.8; 
+    }
 
-        .imagem img:hover{
-            transform: scale(1.1);
-        }
+    .streamo {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      position: relative;
+    }
 
-        td img {
-        width: 200px;
-        height: 300px;
-        display: block;
-        margin: 0 auto;
-        }
+    .streamo img {
+      height: 50px;
+      margin-right: 670px;
+    }
 
-        footer{
-            text-align: center;
-            padding: 50px;
-        }
+    .menu-btn {
+      width: 30px;
+      height: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 1001;
+    }
 
-        .botao{
-            background-color: #0000FF;
-            padding: 8px;
-            border-radius: 5px;
-            text-align: center;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
+    .menu-btn span {
+      display: block;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .menu-btn.open span:nth-child(1) { 
+      transform: translateY(10px) rotate(45deg); 
+    }
+
+    .menu-btn.open span:nth-child(2) { 
+        opacity: 0; 
+    }
+
+    .menu-btn.open span:nth-child(3) { 
+        transform: translateY(-10px) rotate(-45deg); 
+    }
+
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: #1a1a1a;
+      border: 1px solid #555;
+      display: none;
+      flex-direction: column;
+      min-width: 150px;
+      border-radius: 5px;
+      z-index: 1000;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      margin-right: 1330px;
+    }
+
+    .menu a {
+      padding: 12px 16px;
+      font-size: 1em;
+    }
+
+    .menu a:hover {
+      background: #333;
+    }
+
+    table {
+      width: 90%;
+      margin: 5% auto;
+      border-collapse: separate;
+      border-spacing: 20px;
+    }
+
+    td {
+      text-align: center;
+      vertical-align: top;
+    }
+
+    td img {
+      width: 200px;
+      height: 300px;
+      display: block;
+      margin: 0 auto 10px;
+      transition: transform 0.3s;
+      border-radius: 5px;
+    }
+
+    td img:hover { 
+        transform: scale(1.05); 
+    }
+
+    strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1.1em;
+    }
+
+    .botao {
+      background-color: #444;
+      padding: 8px 12px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9em;
+      transition: background 0.3s;
+    }
+
+    .botao:hover { 
+        background-color: #666; 
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 0;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="streamo">
-            <img src="streamo-10-05-2025.png" alt="STREAMO" style="height: 50px; width: auto;">
-        </div>
-    </header>
-    <table>
-        <main>
-            <tr>
-                <td colspan="5" style="margin: 20px 0; padding: 45px 0; text-align: center; font-size: 2em;"><strong>MAIS VISTOS</strong></td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="imagem">
-                        <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30"><img src="https://m.media-amazon.com/images/M/MV5BZDcyNmYxN2QtMmViZS00NTQ4LTlhZTAtZjc4MzY2Yjg0M2ZmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="De Volta para o Futuro"></a> <br>
-                    </div>
-                    <strong>De Volta para o Futuro</strong> <br>
-                    1985 <br> 
-                    <a href="index2.html"><button class="botao">Saiba Mais</button> <br> <br>
-                    <a href="https://www.youtube.com/watch?v=R894dvwNo4w&pp=ygUmZGUgdm9sdGEgcGFyYSBvIGZ1dHVybyB0cmFpbGVyIGR1YmxhZG8%3D"><button class="botao">Assista ao Trailer</button></a>
-                </td>
-                <td>
-                    <div class="imagem">
-                        <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6"><img src="https://m.media-amazon.com/images/M/MV5BOTg4MTRlMjctYWY2My00ZmU4LTg3ODUtNjhjNGJmNDAyNDE3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Senhor dos Anéis: O Retorno do Rei"></a> <br>
-                    </div>
-                    <strong>Senhor dos Anéis: O Retorno do Rei</strong> <br>
-                    2003 <br>
-                    <a href="index3.html"><button class="botao">Saiba Mais</button></a> <br> <br>
-                    <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv"><button class="botao">Assista ao Trailer</button></a>
-                </td>
-                <td>
-                    <div class="imagem">
-                        <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13"><img src="https://m.media-amazon.com/images/M/MV5BMDNkMzU0MzktNDc0Ny00MDE3LWFlZWEtNTQzYTdiYmFiZWUzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Clube da Luta"></a> <br>
-                    </div>
-                    <strong>Clube da Luta</strong> <br>
-                    1999 <br>
-                    <a href="index4.html"><button class="botao">Saiba Mais</button></a> <br> <br>
-                    <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D"><button class="botao">Assista ao Trailer</button></a>
-                </td>
-                <td>
-                    <div class="imagem">
-                        <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86"><img src="https://m.media-amazon.com/images/M/MV5BNzM3ODNlNTAtYTYxNy00NjZhLTg3MGMtYTIwOWYxNzAwMzQ1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Coringa"></a> <br>
-                    </div>
-                    <strong>Coringa</strong> <br>
-                    2019 <br>
-                    <a href="index5.html"><button class="botao">Saiba Mais</button></a> <br> <br>
-                    <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG_SBwkJhgkBhyohjO8%3D"><button class="botao">Assista ao Trailer</button></a>
-                </td>
-                <td>
-                    <div class="imagem">
-                        <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11"><img src="https://m.media-amazon.com/images/M/MV5BOWQ1MDlmNTktNzk3My00MmUwLWJkM2QtYjg0Y2IyYTI2OWI3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Top Gun: Maverick"></a> <br>
-                    </div>
-                    <strong>Top Gun: Maverick</strong> <br>
-                    2022 <br>
-                    <a href="index6.html"><button class="botao">Saiba Mais</button></a> <br> <br>
-                    <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D"><button class="botao">Assista ao Trailer</button></a>
-                </td>
-                <tr>
-                    <td colspan="5" style="margin: 20px 0; padding: 45px 0; text-align: center; font-size: 2em;"><strong>RECOMENDADOS</strong></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="imagem">
-                            <a href="https://www.imdb.com/pt/title/tt0993846/?ref_=hm_tpks_i_1_pd_tp1_pbr_ic"><img src="https://m.media-amazon.com/images/M/MV5BNDhjNDY2OGItNjhmMy00NDk4LWI4YTItM2Q2ZGNjYWIwOGE0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="O Lobo de Wall Street"></a> <br>
-                        </div>
-                        <strong>O Lobo de Wall Street</strong> <br>
-                        2013 <br>
-                        <a href="index7.html"><button class="botao">Saiba Mais</button></a> <br> <br>
-                        <a href="https://www.youtube.com/watch?v=sSbxgk5IEMU&pp=ygUlbyBsb2JvIGRlIHdhbGwgc3RyZWV0IHRyYWlsZXIgZHVibGFkbw%3D%3D"><button class="botao">Assista ao Trailer</button></a>
-                    </td> 
-                    <td>
-                        <div class="imagem">
-                            <a href="https://www.imdb.com/pt/title/tt4154756/?ref_=hm_tpks_i_10_pd_tp1_pbr_ic"><img src="https://m.media-amazon.com/images/M/MV5BZjg0NDMxZWItODc4ZC00YjM4LWJmNmYtNjlmZTE5NTEwNzEzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Vingadores: Guerra Infinita"></a> <br>
-                        </div>
-                        <strong>Vingadores: Guerra Infinita</strong> <br>
-                        2018 <br>
-                        <a href="index8.html"><button class="botao">Saiba Mais</button></a> <br> <br>
-                        <a href="https://www.youtube.com/watch?v=htQch8jDZ4s&pp=ygUqdmluZ2Fkb3JlcyBndWVycmEgaW5maW5pdGEgdHJhaWxlciBkdWJsYWRv"><button class="botao">Assista ao Trailer</button></a>
-                    </td>
-                    <td>
-                        <div class="imagem">
-                            <a href="https://www.imdb.com/pt/title/tt0133093/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_matri"><img src="https://m.media-amazon.com/images/M/MV5BNGE1YzI4NzMtZTUxNi00Y2I5LTg2MmQtODE0NThmYTFmMDk0XkEyXkFqcGc@._V1_.jpg" alt="Matrix"></a> <br>
-                        </div>
-                        <strong>Matrix</strong> <br>
-                        1999 <br>
-                        <a href="index9.html"><button class="botao">Saiba Mais</button></a> <br> <br>
-                        <a href="https://www.youtube.com/watch?v=mPYfd6PCmYY&pp=ygUWbWF0cml4IHRyYWlsZXIgZHVibGFkbw%3D%3D"><button class="botao">Assista ao Trailer</button></a>
-                    </td>
-                    <td>
-                        <div class="imagem">
-                            <a href="https://www.imdb.com/pt/title/tt2119532/?ref_=hm_tpks_i_24_pd_tp1_pbr_ic"><img src="https://m.media-amazon.com/images/M/MV5BZGZmM2UyMmUtYzNlMi00ZGVjLThhYWUtYjdhNmFlOTM4NDUyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Até o Último Homem"></a> <br>
-                        </div>
-                        <strong>Até o Último Homem</strong> <br>
-                        2016 <br>
-                        <a href="index10.html"><button class="botao">Saiba Mais</button></a> <br> <br>
-                        <a href="https://www.youtube.com/watch?v=3d_DJngfp_s&pp=ygUiYXRlIG8gdWx0aW1vIGhvbWVtIHRyYWlsZXIgZHVibGFkbw%3D%3D"><button class="botao">Assista ao Trailer</button></a>
-                    </td>
-                    <td>
-                        <div class="imagem">
-                            <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"><img src="https://m.media-amazon.com/images/M/MV5BZWVkYTBlODQtMjFiMi00ODExLWJhMzUtNGY5MDg0MDQwZTM4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="O Resgate do Soldado Ryan"></a> <br>
-                        </div>
-                        <strong>O Resgate do Soldado Ryan</strong> <br>
-                        1998 <br>
-                        <a href="index11.html"><button class="botao">Saiba Mais</button></a></button> <br> <br>
-                        <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D"><button class="botao">Assista ao Trailer</button></a>
-                    </td>
-                </tr>
-            </tr>
-        </table>
-    </main>
-    <footer>
-        <h4>Conheça um pouco sobre mim abaixo!</h4>
-        <h4><a href="index12.html"><button class="botao">Clique aqui</button></a></h4> <br> <br>
-        <h4>Gostou do site e quer me apoiar?</h4>
-        <h4>Me siga no instagram!</h4>
-        <a href="https://www.instagram.com/joohnyxxz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><button class="botao">@joohnyxzz</button></a>
-    </footer>
+  <header>
+    <div class="streamo">
+      <div class="menu-btn" onclick="toggleMenu(this)">
+        <span></span><span></span><span>
+      </div>
+      <img src="imgs/streamo-10-05-2025.png" alt="STREAMO">
+    </div>
+    <div class="menu" id="menu">
+      <a href="index12.html">Sobre Mim</a>
+      <a href="https://www.instagram.com/joohnyxxz?igsh=MTFoZGlheG5lMGZ1bw==" target="_blank">Meu Insta</a>
+    </div>
+  </header>
+
+  <table>
+    <tr><td colspan="5" style="font-size:2em;"><strong>MAIS VISTOS</strong></td></tr>
+    <tr>
+        <td>
+            <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+            <img src="https://m.media-amazon.com/images/M/MV5BZDcyNmYxN2QtMmViZS00NTQ4LTlhZTAtZjc4MzY2Yjg0M2ZmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="De Volta para o Futuro"></a>
+            <strong>De Volta para o Futuro</strong>
+            1985<br>
+            <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+            <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+        </td>
+        <td>  
+            <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+            <img src="https://m.media-amazon.com/images/M/MV5BOTg4MTRlMjctYWY2My00ZmU4LTg3ODUtNjhjNGJmNDAyNDE3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Senhor dos Anéis: O Retorno do Rei"></a> 
+            <strong>Senhor dos Anéis: O Retorno do Rei</strong> 
+            2003<br> 
+            <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+            <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+        </td>
+        <td> 
+            <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+            <img style="margin-right: 60px;" src="https://m.media-amazon.com/images/M/MV5BMDNkMzU0MzktNDc0Ny00MDE3LWFlZWEtNTQzYTdiYmFiZWUzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Clube da Luta"></a> 
+            <strong style="margin-right: 60px;">Clube da Luta</strong>
+            <div style="margin-right: 60px;">
+              1999<br> 
+            </div>
+            <a style="margin-right: 60px;" href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+            <a style="margin-right: 60px;" href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+        </td>  
+        <td> 
+            <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+            <img src="https://m.media-amazon.com/images/M/MV5BNzM3ODNlNTAtYTYxNy00NjZhLTg3MGMtYTIwOWYxNzAwMzQ1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Coringa"></a> 
+            <strong>Coringa</strong> 
+            2019<br> 
+            <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+            <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG_SBwkJhgkBhyohjO8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+        </td> 
+        <td> 
+            <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+            <img style="margin-left: 50px;" src="https://m.media-amazon.com/images/M/MV5BOWQ1MDlmNTktNzk3My00MmUwLWJkM2QtYjg0Y2IyYTI2OWI3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Top Gun: Maverick"></a> 
+            <strong style="margin-left: 30px;">Top Gun: Maverick</strong> 
+            <div style="margin-left: 30px;">
+              2022<br> 
+            </div>
+            <a style="margin-left: 30px;" href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+            <a style="margin-left: 30px;" href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+        </td>
+    </tr>
+    <tr><td colspan="5" style="font-size:2em;"><strong>RECOMENDADOS</strong></td></tr>
+    <tr>
+        <td>
+            <a href="https://www.imdb.com/pt/title/tt0993846/?ref_=hm_tpks_i_1_pd_tp1_pbr_ic" target="_blank">
+            <img src="https://m.media-amazon.com/images/M/MV5BNDhjNDY2OGItNjhmMy00NDk4LWI4YTItM2Q2ZGNjYWIwOGE0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="O Lobo de Wall Street"></a>
+            <strong>O Lobo de Wall Street</strong>
+            2013<br>
+            <a href="index7.html"><button class="botao">Saiba Mais</button></a><br><br>
+            <a href="https://www.youtube.com/watch?v=sSbxgk5IEMU" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+        </td>
+        <td> 
+            <a href="https://www.imdb.com/pt/title/tt4154756/?ref_=hm_tpks_i_10_pd_tp1_pbr_ic" target="_blank">
+            <img src="https://m.media-amazon.com/images/M/MV5BZjg0NDMxZWItODc4ZC00YjM4LWJmNmYtNjlmZTE5NTEwNzEzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Vingadores: Guerra Infinita"></a> 
+            <strong>Vingadores: Guerra Infinita</strong> 
+            2018<br> 
+            <a href="index8.html"><button class="botao">Saiba Mais</button></a><br><br> 
+            <a href="https://www.youtube.com/watch?v=htQch8jDZ4s&pp=ygUqdmluZ2Fkb3JlcyBndWVycmEgaW5maW5pdGEgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+        </td> 
+        <td> 
+            <a href="https://www.imdb.com/pt/title/tt0133093/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_matri" target="_blank">
+            <img style="margin-right: 60px;" src="https://m.media-amazon.com/images/M/MV5BNGE1YzI4NzMtZTUxNi00Y2I5LTg2MmQtODE0NThmYTFmMDk0XkEyXkFqcGc@._V1_.jpg" alt="Matrix"></a>
+            <strong style="margin-right: 60px;" >Matrix</strong> 
+            <div style="margin-right: 61px;">
+              1999<br> 
+            </div>
+            <a style="margin-right: 60px;" href="index9.html"><button class="botao">Saiba Mais</button></a><br><br> 
+            <a style="margin-right: 60px;" href="https://www.youtube.com/watch?v=mPYfd6PCmYY&pp=ygUWbWF0cml4IHRyYWlsZXIgZHVibGFkbw%3D%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+        </td> 
+        <td> 
+            <a href="https://www.imdb.com/pt/title/tt2119532/?ref_=hm_tpks_i_24_pd_tp1_pbr_ic" target="_blank">
+            <img src="https://m.media-amazon.com/images/M/MV5BZGZmM2UyMmUtYzNlMi00ZGVjLThhYWUtYjdhNmFlOTM4NDUyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Até o Último Homem"></a> 
+            <strong>Até o Último Homem</strong> 
+            2016<br> 
+            <a href="index10.html"><button class="botao">Saiba Mais</button></a><br><br> 
+            <a href="https://www.youtube.com/watch?v=3d_DJngfp_s&pp=ygUiYXRlIG8gdWx0aW1vIGhvbWVtIHRyYWlsZXIgZHVibGFkbw%3D%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+        </td> 
+        <td> 
+            <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+            <img style="margin-left: 50px;" src="https://m.media-amazon.com/images/M/MV5BZWVkYTBlODQtMjFiMi00ODExLWJhMzUtNGY5MDg0MDQwZTM4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="O Resgate do Soldado Ryan"></a> 
+            <strong style="margin-left: 30px;" >O Resgate do Soldado Ryan</strong>
+            <div style="margin-left: 30px;">
+              1998<br> 
+            </div>
+            <a style="margin-left: 30px;" href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+            <a style="margin-left: 30px;" href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+        </td>
+      
+    </tr>
+  </table>
+
+  <script>
+    function toggleMenu(btn) {
+      btn.classList.toggle('open');
+      const menu = document.getElementById('menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+    window.addEventListener('click', function(e) {
+      const btn = document.querySelector('.menu-btn');
+      const menu = document.getElementById('menu');
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        btn.classList.remove('open');
+        menu.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
