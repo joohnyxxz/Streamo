@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="icon" href="imgs/meu_icone.png" type="image/png">
+  <title>Streamo</title>
+  <style>
+    * { 
+        margin: 0; padding: 0; box-sizing: border-box; 
+    }
+
+    body {
+      background-color: #0f0f0f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+    }
+
+    a { 
+      text-decoration: none; color: inherit; 
+    }
+
+    a:hover { 
+      opacity: 0.8; 
+    }
+
+    .streamo {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .streamo img {
+      height: 50px;
+      margin-right: 670px;
+    }
+
+    .menu-btn {
+      width: 30px;
+      height: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .menu-btn span {
+      display: block;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .menu-btn.open span:nth-child(1) { 
+      transform: translateY(10px) rotate(45deg); 
+    }
+
+    .menu-btn.open span:nth-child(2) { 
+        opacity: 0; 
+    }
+
+    .menu-btn.open span:nth-child(3) { 
+        transform: translateY(-10px) rotate(-45deg); 
+    }
+
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: #1a1a1a;
+      border: 1px solid #555;
+      display: none;
+      flex-direction: column;
+      min-width: 150px;
+      border-radius: 5px;
+      z-index: 1000;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      margin-right: 1330px;
+    }
+
+    .menu a {
+      padding: 12px 16px;
+      font-size: 1em;
+    }
+
+    .menu a:hover {
+      background: #333;
+    }
+
+    td {
+      text-align: center;
+      vertical-align: top;
+    }
+
+    strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1.1em;
+    }
+
+    .botao {
+      background-color: #444;
+      padding: 8px 12px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9em;
+      transition: background 0.3s;
+    }
+
+    .botao:hover { 
+        background-color: #666; 
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 0;
+    }
+
+    .carrossel {
+    margin: 40px 0;
+  }
+
+  .categoria-carrossel h2 {
+      font-size: 2em;
+      margin-bottom: 25px;
+  }
+
+  .swiper {
+      width: 90%;
+      height: auto;
+      margin: 0 auto; 
+      padding-bottom: 50px; 
+  }
+
+  .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background-color: #000; 
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; 
+      align-items: center;
+      height: 100%; 
+  }
+
+  .swiper-slide img {
+      width: 200px;
+      height: 300px;
+      display: block;
+      margin: 0 auto 10px;
+      transition: transform 0.3s;
+      border-radius: 5px;
+  }
+
+  .swiper-slide img:hover { 
+        transform: scale(1.05); 
+    }
+
+  .swiper-slide strong {
+      min-height: 40px; 
+      margin-bottom: 5px;
+      font-size: 1em;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+      color: #007aff;
+  }
+
+  .swiper-slide .botao {
+      display: block;
+      width: 90%;
+      margin: 5px auto;
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="streamo">
+      <div class="menu-btn" onclick="toggleMenu(this)">
+        <span></span><span></span><span>
+      </div>
+      <img src="imgs/streamo-10-05-2025.png" alt="STREAMO">
+    </div>
+    <div class="menu" id="menu">
+      <a href="index12.html">Sobre Mim</a>
+      <a href="https://www.instagram.com/joohnyxxz?igsh=MTFoZGlheG5lMGZ1bw==" target="_blank">Meu Insta</a>
+    </div>
+  </header>
+    <div class="carrossel" style="margin-top: 150px;">
+    <h2>Comédia</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/superbad.jpg" alt="Superbad">
+                </a>
+                <strong>Superbad</strong>
+                <div>2007<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/se-beber-nao-case.jpg" alt="Se Beber, Não Case!">
+                </a> 
+                <strong>Se Beber, Não Case!</strong> 
+                <div>2017<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/deadpool.jpg" alt="Deadpool">
+                </a> 
+                <strong>Deadpool</strong>
+                <div>2016<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/projeto-x.webp" alt="Projeto X">
+                </a> 
+                <strong>Projeto X</strong> 
+                <div>2012<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/gente-grande.jpg" alt="Gente Grande">
+                </a> 
+                <strong>Gente Grande</strong> 
+                <div>2010<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/festa-da-salsicha.jpg" alt="Festa da Salsicha">
+                </a> 
+                <strong>Festa da Salsicha</strong> 
+                <div>2016<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/ted.webp" alt="Ted">
+                </a> 
+                <strong>Ted</strong> 
+                <div>2012<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/esposa-de-mentirinha.jpg" alt="Esposa de Mentirinha">
+                </a> 
+                <strong>Esposa de Mentirinha</strong> 
+                <div>2011<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/todo-mundo-em-panico.webp" alt="Todo Mundo em Pânico">
+                </a> 
+                <strong>Todo Mundo em Pânico</strong> 
+                <div>2000<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/curtindo-a-vida-adoidado.webp" alt="Curtindo a Vida Adoidado">
+                </a> 
+                <strong>Curtindo a Vida Adoidado</strong> 
+                <div>1986<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+<div class="carrossel">
+    <h2>Terror</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/it.jpg" alt="It: A Coisa">
+                </a>
+                <strong>It: A Coisa</strong>
+                <div>2017<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/invocacao-do-mal.jpg" alt="Invocação do Mal">
+                </a> 
+                <strong>Invocação do Mal</strong> 
+                <div>2013<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/terrifier.webp" alt="Terrifier 2">
+                </a> 
+                <strong>Terrifier 2</strong>
+                <div>2022<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/hereditario.jpg" alt="Hereditário">
+                </a> 
+                <strong>Hereditário</strong> 
+                <div>2018<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG_SBwkJhgkBhyohjO8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/rua-do-medo-1.webp" alt="Rua do Medo: 1994 - Parte 1">
+                </a> 
+                <strong>Rua do Medo: 1994 - Parte 1</strong> 
+                <div>2021<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/rua-do-medo-2.jpg" alt="Rua do Medo: 1978 - Parte 2">
+                </a> 
+                <strong>Rua do Medo: 1978 - Parte 2</strong> 
+                <div>2021<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/rua-do-medo-3.jpg" alt="Rua do Medo: 1666 - Parte 3">
+                </a> 
+                <strong>Rua do Medo: 1666 - Parte 3</strong> 
+                <div>2021<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/sobrenatural.jpg" alt="Sobrenatural">
+                </a> 
+                <strong>Sobrenatural</strong> 
+                <div>2010<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/it-2.webp" alt="It - Capítulo Dois">
+                </a> 
+                <strong>It - Capítulo Dois</strong> 
+                <div>2019<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Ação</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/batman.webp" alt="Batman">
+                </a>
+                <strong>Batman</strong>
+                <div>2022<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/thor.jpg" alt="Thor Ragnarok">
+                </a> 
+                <strong>Thor Ragnarok</strong> 
+                <div>2017<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/star-wars.jpg" alt="Star Wars">
+                </a> 
+                <strong>Star Wars</strong>
+                <div>2017<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/bailarina.webp" alt="Bailarina">
+                </a> 
+                <strong>Bailarina</strong> 
+                <div>2025<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG_SBwkJhgkBhyohjO8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/guardioes-galaxia.jpg" alt="Guardiões da Galáxia">
+                </a> 
+                <strong>Guardiões da Galáxia</strong> 
+                <div>2017<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/bad-boys.webp" alt="Bad Boys para Sempre">
+                </a> 
+                <strong>Bad Boys para Sempre</strong> 
+                <div>2020<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/batman-cavaleiro-das-trevas.png" alt="Batman: O Cavaleiro das Trevas">
+                </a> 
+                <strong>Batman: O Cavaleiro das Trevas</strong> 
+                <div>2008<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/top-gun.jpg" alt="Top Gun: Maverick">
+                </a> 
+                <strong>Top Gun: Maverick</strong> 
+                <div>2022<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/viuva-negra.jpg" alt="Viúva Negra">
+                </a> 
+                <strong>Viúva Negra</strong> 
+                <div>2021<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/deedpool-wolverine.jpg" alt="Deadpool & Wolverine">
+                </a> 
+                <strong>Deadpool & Wolverine</strong> 
+                <div>2024<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Suspense</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/ilha-do-medo.webp" alt="Ilha do Medo">
+                </a>
+                <strong>Ilha do Medo</strong>
+                <div>2018<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/fragmentado.jpg" alt="Fragmentado">
+                </a> 
+                <strong>Fragmentado</strong> 
+                <div>2016<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/uma-noite-de-crime.jpg" alt="Uma Noite de Crime">
+                </a> 
+                <strong>Uma Noite de Crime</strong>
+                <div>2013<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/a-5-onda.webp" alt="A 5° Onda">
+                </a> 
+                <strong>A 5° Onda</strong> 
+                <div>2016<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG_SBwkJhgkBhyohjO8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/o-poco.webp" alt="O Poço">
+                </a> 
+                <strong>O Poço</strong> 
+                <div>2019<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/o-quarto-de-jack.jpeg" alt="O Quarto de Jack">
+                </a> 
+                <strong>O Quarto de Jack</strong> 
+                <div>2015<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/telefone-preto.jpg" alt="O Telefone Preto">
+                </a> 
+                <strong>O Telefone Preto</strong> 
+                <div>2021<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/corra.jpeg" alt="Corra!">
+                </a> 
+                <strong>Corra!</strong> 
+                <div>2017<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/o-iluminado.jpeg" alt="O Iluminado">
+                </a> 
+                <strong>O Iluminado</strong> 
+                <div>2019<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/clube-da-luta.webp" alt="Clube da Luta">
+                </a> 
+                <strong>Clube da Luta</strong> 
+                <div>1999<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Aventura</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0993846/?ref_=hm_tpks_i_1_pd_tp1_pbr_ic" target="_blank">
+                    <img src="imgs/uncharted.jpg" alt="Uncharted">
+                </a>
+                <strong>Uncharted</strong>
+                <div>2022<br><br></div>
+                <a href="index7.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=sSbxgk5IEMU" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt4154756/?ref_=hm_tpks_i_10_pd_tp1_pbr_ic" target="_blank">
+                    <img src="imgs/lar-das-criancas-peculiares.jpg" alt="O Lar das Crianças Peculiares">
+                </a> 
+                <strong>O Lar das Crianças Peculiares</strong> 
+                <div>2016<br><br></div>
+                <a href="index8.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=htQch8jDZ4s&pp=ygUqdmluZ2Fkb3JlcyBndWVycmEgaW5maW5pdGEgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0133093/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_matri" target="_blank">
+                    <img src="imgs/superman.jpg" alt="Superman">
+                </a>
+                <strong>Superman</strong> 
+                <div>2025<br><br></div>
+                <a href="index9.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=mPYfd6PCmYY&pp=ygUWbWF0cml4IHRyYWlsZXIgZHVibGFkbw%3D%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2119532/?ref_=hm_tpks_i_24_pd_tp1_pbr_ic" target="_blank">
+                    <img src="imgs/shark-boy-lava-girl.jpg" alt="Sharkboy e Lavagirl">
+                </a> 
+                <strong>Sharkboy e Lavagirl</strong> 
+                <div>2005<br><br></div> 
+                <a href="index10.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=3d_DJngfp_s&pp=ygUiYXRlIG8gdWx0aW1vIGhvbWVtIHRyYWlsZXIgZHVibGFkbw%3D%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/Arca-de-Noé.jpg" alt="Arca de Noé">
+                </a> 
+                <strong>Arca de Noé</strong>
+                <div>2024<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/os-goonies.jpg" alt="Os Goonies">
+                </a> 
+                <strong>Os Goonies</strong>
+                <div>1985<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/a-era-do-gelo.jpeg" alt="A Era do Gelo">
+                </a> 
+                <strong>A Era do Gelo</strong>
+                <div>2002<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/o-impossivel.jpg" alt="O Impossível">
+                </a> 
+                <strong>O Impossível</strong>
+                <div>2012<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/minecraft.jpg" alt="Minecraft">
+                </a> 
+                <strong>Minecraft</strong>
+                <div>2025<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/cap-america.webp" alt="Capitão América: O Primeiro Vingador">
+                </a> 
+                <strong>Capitão América: O Primeiro Vingador</strong>
+                <div>2011<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Com a família</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0993846/?ref_=hm_tpks_i_1_pd_tp1_pbr_ic" target="_blank">
+                    <img src="imgs/a-fuga-das-galinhas.jpg" alt="A Fuga das Galinhas">
+                </a>
+                <strong>A Fuga das Galinhas</strong>
+                <div>2000<br><br></div>
+                <a href="index7.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=sSbxgk5IEMU" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt4154756/?ref_=hm_tpks_i_10_pd_tp1_pbr_ic" target="_blank">
+                    <img src="imgs/super-mario-bros.jpg" alt="Super Mario Bros. O Filme">
+                </a> 
+                <strong>Super Mario Bros. O Filme</strong> 
+                <div>2023<br><br></div>
+                <a href="index8.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=htQch8jDZ4s&pp=ygUqdmluZ2Fkb3JlcyBndWVycmEgaW5maW5pdGEgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0133093/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_matri" target="_blank">
+                    <img src="imgs/homem-aranha-sem-volta-para-casa.jpg" alt="Homem-Aranha: Sem Volta para Casa">
+                </a>
+                <strong>Homem-Aranha: Sem Volta para Casa</strong> 
+                <div>2021<br><br></div>
+                <a href="index9.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=mPYfd6PCmYY&pp=ygUWbWF0cml4IHRyYWlsZXIgZHVibGFkbw%3D%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2119532/?ref_=hm_tpks_i_24_pd_tp1_pbr_ic" target="_blank">
+                    <img src="imgs/sonic-3.webp" alt="Sonic 3 - O Filme">
+                </a> 
+                <strong>Sonic 3 - O Filme</strong> 
+                <div>2024<br><br></div> 
+                <a href="index10.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=3d_DJngfp_s&pp=ygUiYXRlIG8gdWx0aW1vIGhvbWVtIHRyYWlsZXIgZHVibGFkbw%3D%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/turbo.jpg" alt="Turbo">
+                </a> 
+                <strong>Turbo</strong>
+                <div>2013<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/guerreiras-do-kpop.webp" alt="Guerreiras do K-Pop">
+                </a> 
+                <strong>Guerreiras do K-Pop</strong>
+                <div>2025<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/sherk.png" alt="Shrek">
+                </a> 
+                <strong>Shrek</strong>
+                <div>2001<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/alvin.webp" alt="Alvin e os Esquilos">
+                </a> 
+                <strong>Alvin e os Esquilos</strong>
+                <div>2007<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/space-jam.jpg" alt="Space Jam: O Jogo do Século">
+                </a> 
+                <strong>Space Jam: O Jogo do Século</strong>
+                <div>1996<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120815/?ref_=hm_tpks_i_28_pd_tp1_pbr_ic"target="_blank">
+                    <img src="imgs/space-jam-2.jpg" alt="Space Jam: Um Novo Legado">
+                </a> 
+                <strong>Space Jam: Um Novo Legado</strong>
+                <div>2021<br><br></div>
+                <a href="index11.html"><button class="botao">Saiba Mais</button></a></button><br><br> 
+                <a href="https://www.youtube.com/watch?v=WdHJ_nLRjIA&pp=ygUpbyByZXNnYXRlIGRvIHNvbGRhZG8gcnlhbiB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Romance</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/para-todos-os-garotos-que-ja-amei.webp" alt="Para todos os garotos que já amei">
+                </a>
+                <strong>Para Todos os Garotos que Já Amei</strong>
+                <div>2018<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/como-se-fosse-a-primeira-vez.webp" alt="Como Se Fosse a Primeira Vez">
+                </a> 
+                <strong>Como Se Fosse a Primeira Vez</strong> 
+                <div>2004<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/a-culpa-e-das-estrelas.jpg" alt="A Culpa é das Estrelas">
+                </a> 
+                <strong>A Culpa é das Estrelas</strong>
+                <div>2014<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/o-date-perfeito.webp" alt="O Date Perfeito">
+                </a> 
+                <strong>O Date Perfeito</strong> 
+                <div>2019<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG_SBwkJhgkBhyohjO8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/10-coisas-que-eu-odeio-em-voce.webp" alt="10 Coisas Que Eu Odeio Em Você">
+                </a> 
+                <strong>10 Coisas Que Eu Odeio Em Você</strong> 
+                <div>1999<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/barraca-do-beijo.jpg" alt="A Barraca do Beijo">
+                </a> 
+                <strong>A Barraca do Beijo</strong> 
+                <div>2018<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/nu.jpg" alt="Nu">
+                </a> 
+                <strong>Nu</strong> 
+                <div>2017<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/amor-de-aluguel.webp" alt="Amor de Aluguel">
+                </a> 
+                <strong>Amor de Aluguel</strong> 
+                <div>1999<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/atraves-da-minha-janela.jpg" alt="Através da Minha Janela">
+                </a> 
+                <strong>Através da Minha Janela</strong> 
+                <div>2022<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/sua-culpa.jpeg" alt="Sua Culpa">
+                </a> 
+                <strong>Sua Culpa</strong> 
+                <div>2024<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Baseado na vida real</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/mamonas-assassinas.jpg" alt="Mamonas Assassinas - O Filme">
+                </a>
+                <strong>Mamonas Assassinas - O Filme</strong>
+                <div>2023<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/oppenheimer.jpeg" alt="Oppenheimer">
+                </a> 
+                <strong>Oppenheimer</strong> 
+                <div>2023<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/straight-outta-compton.jpg" alt="Straight Outta Compton: A História do N.W.A.">
+                </a> 
+                <strong>Straight Outta Compton: A História do N.W.A.</strong>
+                <div>2015<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/titanic.jpg" alt="Titanic">
+                </a> 
+                <strong>Titanic</strong> 
+                <div>1997<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG9" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/nosso-sonho.jpg" alt="Nosso Sonho">
+                </a> 
+                <strong>Nosso Sonho</strong> 
+                <div>2023<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/a-procura-da-felicidade.jpg" alt="À Procura da Felicidade">
+                </a> 
+                <strong>À Procura da Felicidade</strong> 
+                <div>2006<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/jogo-da-imitacao.jpg" alt="O Jogo da Imitação">
+                </a> 
+                <strong>O Jogo da Imitação</strong> 
+                <div>2014<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/o-menino-vento.webp" alt="O Menino Que Descobriu o Vento">
+                </a> 
+                <strong>O Menino Que Descobriu o Vento</strong> 
+                <div>2019<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/as-ultimas-horas-de-hitler.jpg" alt="A Queda! As Últimas Horas de Hitler">
+                </a> 
+                <strong>A Queda! As Últimas Horas de Hitler</strong> 
+                <div>2004<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/o-pianista.jpg" alt="O Pianista">
+                </a> 
+                <strong>O Pianista</strong> 
+                <div>2002<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Drama</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/o-menino-do-pijama-listrado.jpg" alt="O Menino do Pijama Listrado">
+                </a>
+                <strong>O Menino do Pijama Listrado</strong>
+                <div>2008<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/a-cinco-passos-de-voces.jpg" alt="A Cinco Passos de Você">
+                </a> 
+                <strong>A Cinco Passos de Você</strong> 
+                <div>2019<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/como-eu-era-antes-de-voce.jpg" alt="Como Eu Era de Você">
+                </a> 
+                <strong>Como Eu Era Antes de Você</strong>
+                <div>2016<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/o-milagre-da-fe.jpg" alt="O Milagre da Fé">
+                </a> 
+                <strong>O Milagre da Fé</strong> 
+                <div>2019<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG9" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/milagre-na-cela-7.jpg" alt="Milagre na Cela 7">
+                </a> 
+                <strong>Milagre na Cela 7</strong> 
+                <div>2019<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/a-espera-de-um-milagre.jpg" alt="À Espera de um Milagre">
+                </a> 
+                <strong>À Espera de um Milagre</strong> 
+                <div>1999<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/scarface.jpg" alt="Scarface">
+                </a> 
+                <strong>Scarface</strong> 
+                <div>1983<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/intocaveis.webp" alt="Intocáveis">
+                </a> 
+                <strong>Intocáveis</strong> 
+                <div>2011<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/poderoso-chefao.jpg" alt="O Poderoso Chefão">
+                </a> 
+                <strong>O Poderoso Chefão</strong> 
+                <div>1972<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/forrest-gump.jpg" alt="Forrest Gump: O Contador de Histórias">
+                </a> 
+                <strong>Forrest Gump: O Contador de Histórias</strong> 
+                <div>1994<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Campeões de bilheteria</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/avatar.jpeg" alt="Avatar">
+                </a>
+                <strong>Avatar</strong>
+                <div>2009<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/avatar-2.jpeg" alt="Avatar: O Caminho da Água">
+                </a> 
+                <strong>Avatar: O Caminho da Água</strong> 
+                <div>2022<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/star-wars-o-despertar-da-forca.jpg" alt="Star Wars: O Despertar da Força">
+                </a> 
+                <strong>Star Wars: O Despertar da Força</strong>
+                <div>2015<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/divertidamente-2.png" alt="Divertida Mente 2">
+                </a> 
+                <strong>Divertida Mente 2</strong> 
+                <div>2024<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG9" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/pantera-negra.jpg" alt="Pantera Negra">
+                </a> 
+                <strong>Pantera Negra</strong> 
+                <div>2018<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/frozen-2.jpg" alt="Frozen 2">
+                </a> 
+                <strong>Frozen 2</strong> 
+                <div>2019<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/barbie.jpg" alt="Barbie">
+                </a> 
+                <strong>Barbie</strong> 
+                <div>2023<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/os-incriveis-2.png" alt="Os Incríveis 2">
+                </a> 
+                <strong>Os Incríveis 2</strong> 
+                <div>2018<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/homem-de-ferro-3.jpg" alt="Homem de Ferro 3">
+                </a> 
+                <strong>Homem de Ferro 3</strong> 
+                <div>2013<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/minions.webp" alt="Minions">
+                </a> 
+                <strong>Minions</strong> 
+                <div>2015<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Ficção científica</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/interestelar.jpg" alt="Interestelar">
+                </a>
+                <strong>Interestelar</strong>
+                <div>2014<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/logan.jpeg" alt="Logan">
+                </a> 
+                <strong>Logan</strong> 
+                <div>2017<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/planeta-dos-macacos.jpg" alt="Planeta dos Macacos: A Guerra">
+                </a> 
+                <strong>Planeta dos Macacos: A Guerra</strong>
+                <div>2016<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/walle.webp" alt="WALL-E">
+                </a> 
+                <strong>WALL-E</strong> 
+                <div>2008<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG9" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/et.jpg" alt="E.T. O Extraterrestre">
+                </a> 
+                <strong>E.T. O Extraterrestre</strong> 
+                <div>1982<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/matrix.jpg" alt="Matrix">
+                </a> 
+                <strong>Matrix</strong> 
+                <div>1999<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/o-exterminador-do-futuro.jpg" alt="O Exterminador do Futuro">
+                </a> 
+                <strong>O Exterminador do Futuro</strong> 
+                <div>1984<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/jurassic-park.jpg" alt="Jurassic Park - O Parque dos Dinossauros">
+                </a> 
+                <strong>Jurassic Park - O Parque dos Dinossauros</strong> 
+                <div>1983<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/de-volta-para-o-futuro.jpg" alt="De Volta para o Futuro">
+                </a> 
+                <strong>De Volta para o Futuro</strong> 
+                <div>1985<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/blade-runner.jpg" alt="Blade Runner 2049">
+                </a> 
+                <strong>Blade Runner 2049</strong> 
+                <div>2017<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Nacionais</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/cidade-de-deus.jpg" alt="Cidade de Deus">
+                </a>
+                <strong>Cidade de Deus</strong>
+                <div>2002<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/o-auto-da-compadecida.webp" alt="O Auto da Compadecida">
+                </a> 
+                <strong>O Auto da Compadecida</strong> 
+                <div>2000<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/tropa-de-elite.jpeg" alt="Tropa de Elite">
+                </a> 
+                <strong>Tropa de Elite</strong>
+                <div>2007<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/carandiru.jpg" alt="Carandiru: O Filme">
+                </a> 
+                <strong>Carandiru: O Filme</strong> 
+                <div>2003<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG9" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/ainda-estou-aqui.jpeg" alt="Ainda Estou Aqui">
+                </a> 
+                <strong>Ainda Estou Aqui</strong> 
+                <div>2024<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/central-do-brasil.jpeg" alt="Central do Brasil">
+                </a> 
+                <strong>Central do Brasil</strong> 
+                <div>1998<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/tropa-de-elite-2.jpeg" alt="Tropa de Elite 2: O Inimigo Agora é Outro">
+                </a> 
+                <strong>Tropa de Elite 2: O Inimigo Agora é Outro</strong> 
+                <div>2010<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/minha-mae-e-uma-peca.jpg" alt="Minha Mãe É uma Peça">
+                </a> 
+                <strong>Minha Mãe É uma Peça</strong> 
+                <div>2013<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/bacurau.jpeg" alt="Bacurau">
+                </a> 
+                <strong>Bacurau</strong> 
+                <div>2019<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/chico-bento.jpg" alt="Chico Bento e a Goiabeira Maraviósa">
+                </a> 
+                <strong>Chico Bento e a Goiabeira Maraviósa</strong> 
+                <div>2024<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <h2>Sagas imperdíveis</h2> 
+    <div class="carrossel">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-1.webp" alt="Velozes & Furiosos">
+                </a>
+                <strong>Velozes & Furiosos</strong>
+                <div>2001<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-2.jpg" alt="+ Velozes + Furiosos">
+                </a> 
+                <strong>+ Velozes + Furiosos</strong> 
+                <div>2003<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-3.webp" alt="Velozes & Furiosos: Desafio em Tóquio">
+                </a> 
+                <strong>Velozes & Furiosos: Desafio em Tóquio</strong>
+                <div>2006<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-4.webp" alt="Velozes e Furiosos 4">
+                </a> 
+                <strong>Velozes e Furiosos 4</strong> 
+                <div>2009<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG9" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-5.webp" alt="Velozes e Furiosos 5: Operação Rio">
+                </a> 
+                <strong>Velozes e Furiosos 5: Operação Rio</strong> 
+                <div>2011<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-6.webp" alt="Velozes e Furiosos 6">
+                </a> 
+                <strong>Velozes e Furiosos 6</strong> 
+                <div>2013<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-7.webp" alt="Velozes & Furiosos 7">
+                </a> 
+                <strong>Velozes & Furiosos 7</strong> 
+                <div>2015<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-8.webp" alt="Velozes e Furiosos 8">
+                </a> 
+                <strong>Velozes e Furiosos 8</strong> 
+                <div>2017<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-9.jpg" alt="Velozes e Furiosos 9">
+                </a> 
+                <strong>Velozes e Furiosos 9</strong> 
+                <div>2021<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-10.jpg" alt="Velozes e Furiosos 10">
+                </a> 
+                <strong>Velozes e Furiosos 10</strong> 
+                <div>2023<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <div class="carrossel">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/vingadores-1.webp" alt="Os Vingadores">
+                </a>
+                <strong>Os Vingadores</strong>
+                <div>2012<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/vingadores-2.jpg" alt="Vingadores: Era de Ultron">
+                </a> 
+                <strong>Vingadores: Era de Ultron</strong> 
+                <div>2015<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/vingadores-3.jpg" alt="Vingadores: Guerra Infinita">
+                </a> 
+                <strong>Vingadores: Guerra Infinita</strong>
+                <div>2018<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/vingadores-4.jpg" alt="Vingadores: Ultimato">
+                </a> 
+                <strong>Vingadores: Ultimato</strong> 
+                <div>2019<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG9" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/vingadores-5.webp" alt="Vingadores: Doomsday">
+                </a> 
+                <strong>Vingadores: Doomsday</strong> 
+                <div>2026<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+<div class="carrossel">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0241527/" target="_blank">
+                    <img src="imgs/harry-1.png" alt="Harry Potter e a Pedra Filosofal">
+                </a>
+                <strong>Harry Potter e a Pedra Filosofal</strong>
+                <div>2001<br><br></div>
+                <a href="index-hp1.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0295297/" target="_blank">
+                    <img src="imgs/harry-2.png" alt="Harry Potter e a Câmara Secreta">
+                </a> 
+                <strong>Harry Potter e a Câmara Secreta</strong> 
+                <div>2002<br><br></div> 
+                <a href="index-hp2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0304141/" target="_blank">
+                    <img src="imgs/harry-3.jpg" alt="Harry Potter e o Prisioneiro de Azkaban">
+                </a> 
+                <strong>Harry Potter e o Prisioneiro de Azkaban</strong>
+                <div>2004<br><br></div>
+                <a href="index-hp3.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0330373/" target="_blank">
+                    <img src="imgs/harry-4.jpg" alt="Harry Potter e o Cálice de Fogo">
+                </a> 
+                <strong>Harry Potter e o Cálice de Fogo</strong> 
+                <div>2005<br><br></div> 
+                <a href="index-hp4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0373889/" target="_blank">
+                    <img src="imgs/harry-5.png" alt="Harry Potter e a Ordem da Fênix">
+                </a> 
+                <strong>Harry Potter e a Ordem da Fênix</strong> 
+                <div>2007<br><br></div>
+                <a href="index-hp5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0417741/" target="_blank">
+                    <img src="imgs/harry-6.jpg" alt="Harry Potter e o Enigma do Príncipe">
+                </a> 
+                <strong>Harry Potter e o Enigma do Príncipe</strong> 
+                <div>2009<br><br></div>
+                <a href="index-hp6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0926084/" target="_blank">
+                    <img src="imgs/harry-7.png" alt="Harry Potter e as Relíquias da Morte - Parte 1">
+                </a> 
+                <strong>Harry Potter e as Relíquias da Morte - Parte 1</strong> 
+                <div>2010<br><br></div>
+                <a href="index-hp7a.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1201607/" target="_blank">
+                    <img src="imgs/harry-8.png" alt="Harry Potter e as Relíquias da Morte - Parte 2">
+                </a> 
+                <strong>Harry Potter e as Relíquias da Morte - Parte 2</strong> 
+                <div>2011<br><br></div>
+                <a href="index-hp7b.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+</div>
+    <div class="carrossel">
+    <h2>Séries</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/stranger-things.jpg" alt="Stranger Things">
+                </a>
+                <strong>Stranger Things</strong>
+                <div>2016<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/breaking-bad.jpg" alt="Breaking Bad">
+                </a> 
+                <strong>Breaking Bad</strong> 
+                <div>2013<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/umbrella-academy.jpg" alt="The Umbrella Academy">
+                </a> 
+                <strong>The Umbrella Academy</strong>
+                <div>2019<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/como-vender-drogas-online.jpg" alt="Como Vender Drogas Online (Rápido)">
+                </a> 
+                <strong>Como Vender Drogas Online (Rápido)</strong> 
+                <div>2019<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG9" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/alice-in-borderland.jpg" alt="Alice in Borderland">
+                </a> 
+                <strong>Alice in Borderland</strong> 
+                <div>2020<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/the-office.webp" alt="The Office">
+                </a> 
+                <strong>The Office</strong> 
+                <div>2005<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/dexter.webp" alt="Dexter">
+                </a> 
+                <strong>Dexter</strong> 
+                <div>2006<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/cidade-dos-homens.webp" alt="Cidade dos Homens">
+                </a> 
+                <strong>Cidade dos Homens</strong> 
+                <div>2002<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/it-derry.webp" alt="It: Bem-Vindos a Derry">
+                </a> 
+                <strong>It: Bem-Vindos a Derry</strong> 
+                <div>2025<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/the-last-of-us.webp" alt="The Last of Us">
+                </a> 
+                <strong>The Last of Us</strong> 
+                <div>2023<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Animação</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/toy-story.jpg" alt="Toy Story">
+                </a>
+                <strong>Toy Story</strong>
+                <div>1995<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/por-agua-a-baixo.jpg" alt="Por Água Abaixo">
+                </a> 
+                <strong>Por Água Abaixo</strong> 
+                <div>2006<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/o-segredo-dos-animais.webp" alt="O Segredo dos Animais">
+                </a> 
+                <strong>O Segredo dos Animais</strong>
+                <div>2006<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/carros.webp" alt="Carros">
+                </a> 
+                <strong>Carros</strong> 
+                <div>2006<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG9" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/detona-ralph.jpeg" alt="Detona Ralph">
+                </a> 
+                <strong>Detona Ralph</strong> 
+                <div>2012<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/madagascar.webp" alt="Madagascar">
+                </a> 
+                <strong>Madagascar</strong> 
+                <div>2005<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/up.jpg" alt="Up: Altas Aventuras">
+                </a> 
+                <strong>Up: Altas Aventuras</strong> 
+                <div>2009<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/procurando-nemo.jpg" alt="Procurando Nemo">
+                </a> 
+                <strong>Procurando Nemo</strong> 
+                <div>2003<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/rio.jpg" alt="Rio">
+                </a> 
+                <strong>Rio</strong> 
+                <div>2011<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/ratatouille.jpg" alt="Ratatouille">
+                </a> 
+                <strong>Ratatouille</strong> 
+                <div>2007<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Documentários</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=chttp_i_30" target="_blank">
+                    <img src="imgs/travis-scott.jpg" alt="Travis Scott: Voando Alto">
+                </a>
+                <strong>Travis Scott: Voando Alto</strong>
+                <div>2019<br><br></div>
+                <a href="index2.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=R894dvwNo4w" target="_blank"><button class="botao">Assista ao Trailer</button></a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0167260/?ref_=chttp_i_6" target="_blank">
+                    <img src="imgs/Starting-5.jpg" alt="NBA: 5 em Quadra">
+                </a> 
+                <strong>NBA: 5 em Quadra</strong> 
+                <div>2024<br><br></div> 
+                <a href="index3.html"><button class="botao">Saiba Mais</button></a><br><br>
+                <a href="https://www.youtube.com/watch?v=OQgySPQ5M3Y&pp=ygUzU2VuaG9yIGRvcyBBbsOpaXM6IE8gUmV0b3JubyBkbyBSZWkgdHJhaWxlciBkdWJsYWRv" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=chttp_t_13" target="_blank">
+                    <img src="imgs/Arremesso-final.jpg" alt="Arremesso Final">
+                </a> 
+                <strong>Arremesso Final</strong>
+                <div>2020<br><br></div>
+                <a href="index4.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=Fs0-4NLSO2Y&pp=ygUdY2x1YmUgZGEgbHV0YSB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7286456/?ref_=chttp_i_86" target="_blank">
+                    <img src="imgs/racionais.webp" alt="Racionais">
+                </a> 
+                <strong>Racionais</strong> 
+                <div>2022<br><br></div> 
+                <a href="index5.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=621pfj0EfIc&pp=ygUXY29yaW5nYSB0cmFpbGVyIGR1YmxhZG9" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/a-queda-de-p-diddy.webp" alt="A Queda de P.Diddy">
+                </a> 
+                <strong>A Queda de P.Diddy</strong> 
+                <div>2025<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/neymar.jpg" alt="Neymar - O Caos Perfeito">
+                </a> 
+                <strong>Neymar - O Caos Perfeito</strong> 
+                <div>2022<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/brasil.jpg" alt="Brasil 2002 - Os Bastidores do Penta">
+                </a> 
+                <strong>Brasil 2002 - Os Bastidores do Penta</strong> 
+                <div>2022<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/o-time-da-redencao.jpg" alt="O Time da Redenção">
+                </a> 
+                <strong>O Time da Redenção</strong> 
+                <div>2022<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/f1-dirigir-para-viver.png" alt="F1: Dirigir Para Viver">
+                </a> 
+                <strong>F1: Dirigir Para Viver</strong> 
+                <div>2019<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=chttp_i_11" target="_blank">
+                    <img src="imgs/travis-scott-2.webp" alt="Desastre Total: Festival Astroworld">
+                </a> 
+                <strong>Desastre Total: Festival Astroworld</strong> 
+                <div>2025<br><br></div>
+                <a href="index6.html"><button class="botao">Saiba Mais</button></a><br><br> 
+                <a href="https://www.youtube.com/watch?v=7aOCYTflp8o&pp=ygUgdG9wIGd1biBtYXZlcmljayB0cmFpbGVyIGR1YmxhZG8%3D" target="_blank"><button class="botao">Assista ao Trailer</button></a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+  <script>
+    function toggleMenu(btn) {
+        btn.classList.toggle('open');
+        const menu = document.getElementById('menu');
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+    window.addEventListener('click', function(e) {
+        const btn = document.querySelector('.menu-btn');
+        const menu = document.getElementById('menu');
+        if (!btn.contains(e.target) && !menu.contains(e.target)) {
+            btn.classList.remove('open');
+            menu.style.display = 'none';
+        }
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    const swiperContainers = document.querySelectorAll('.swiper');
+
+    swiperContainers.forEach(swiperElement => {
+        new Swiper(swiperElement, {
+            slidesPerView: 1, 
+            spaceBetween: 10,
+            loop: true,
+            
+            breakpoints: {
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                },
+            },
+            
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+</script>
+</body>
+</html>
