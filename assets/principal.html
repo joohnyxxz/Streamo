@@ -1,0 +1,2525 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="icon" href="imgs/meu_icone.png" type="image/png">
+  <title>Streamo</title>
+  <style>
+    * { 
+        margin: 0; 
+        padding: 0; 
+        box-sizing: border-box; 
+    }
+
+    body {
+      background-color: #0f0f0f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+    }
+
+    a { 
+      text-decoration: none; 
+      color: inherit; 
+    }
+
+    a:hover { 
+      opacity: 0.8; 
+    }
+
+    .streamo {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .streamo img {
+      height: 50px;
+      margin-right: 670px;
+    }
+
+    .menu-btn {
+      width: 30px;
+      height: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .menu-btn span {
+      display: block;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .menu-btn.open span:nth-child(1) { 
+      transform: translateY(10px) rotate(45deg); 
+    }
+
+    .menu-btn.open span:nth-child(2) { 
+        opacity: 0; 
+    }
+
+    .menu-btn.open span:nth-child(3) { 
+        transform: translateY(-10px) rotate(-45deg); 
+    }
+
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: #1a1a1a;
+      border: 1px solid #555;
+      display: none;
+      flex-direction: column;
+      min-width: 150px;
+      border-radius: 5px;
+      z-index: 1000;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      margin-right: 1330px;
+    }
+
+    .menu a {
+      padding: 12px 16px;
+      font-size: 1em;
+    }
+
+    .menu a:hover {
+      background: #333;
+    }
+
+    strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1.1em;
+    }
+
+    .botao {
+      background-color: #444;
+      padding: 8px 12px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9em;
+      transition: background 0.3s;
+    }
+
+    .botao:hover { 
+        background-color: #666; 
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 0;
+    }
+
+    .carrossel {
+    margin: 40px 0;
+    }
+
+    .carrossel h2 {
+      font-size: 2em;
+      margin-bottom: 25px;
+      margin-left: 75px;
+      padding: 30px;
+      background-color: #0f0f0f;
+      border-left: 10px solid #3c3c3c;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .swiper {
+      width: 90%;
+      height: auto;
+      margin: 0 auto; 
+      padding-bottom: 50px; 
+    }
+
+    .swiper-slide {
+    position: relative; 
+    text-align: center;
+    font-size: 18px;
+    background-color: #000000; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+    height: 450px; 
+    border-radius: 20px;
+  }
+
+  .classificacao-idade {
+    position: absolute; 
+    top: 5px;   
+    right: 5px; 
+    width: 40px;  
+    margin-top: 255px;
+    margin-right: 20px; 
+    z-index: 10; 
+    transition: none;
+  }
+
+  .swiper-slide img:not(.classificacao-idade) { 
+    width: 200px;
+    height: 290px;
+    display: block;
+    margin: 20px auto 10px;
+    transition: transform 0.3s;
+    border-radius: 5px;
+    z-index: 1; 
+    object-fit: cover; 
+}
+
+    .swiper-slide:hover { 
+        transform: scale(1.05); 
+        border-radius: 20px;
+    }
+
+  .swiper-slide strong {
+      min-height: 40px; 
+      margin-bottom: 5px;
+      font-size: 1em;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+      margin-top: 75px;
+      color: #e0e0e0;
+  }
+
+  .swiper-slide .botao {
+      display: block;
+      width: 90%;
+      margin: 5px auto;
+  }
+
+  .titulo {
+    font-size: larger;
+  }
+
+  .subtitulo {
+    font-size: small;
+  }
+
+  .nota {
+    color: #FFD700;
+    font-size: medium;
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="streamo">
+      <div class="menu-btn" onclick="toggleMenu(this)">
+        <span></span><span></span><span>
+      </div>
+      <img src="imgs/streamo-10-05-2025.png" alt="STREAMO">
+    </div>
+    <div class="menu" id="menu">
+      <a href="portifolio.html">Sobre Mim</a>
+      <a href="https://www.instagram.com/joohnyxxz?igsh=MTFoZGlheG5lMGZ1bw==" target="_blank">Meu Insta</a>
+    </div>
+  </header>
+    <div class="carrossel" style="margin-top: 150px;">
+    <h2>Comédia</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0829482/?ref_=fn_t_1" target="_blank">
+                    <img src="imgs/superbad.jpg" alt="Superbad">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+
+                    <strong class="titulo">Superbad</strong>
+                    <div class="nota">⭐ 7,6/10</div><br>
+                    <div class="subtitulo">2007 • Comédia/Adolescente <br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1119646/" target="_blank">
+                    <img src="imgs/se-beber-nao-case.jpg" alt="Se Beber, Não Case!">
+
+                    <img src="imgs/18.svg" alt="Classificação 18 Anos" class="classificacao-idade">
+
+                    <strong class="titulo">Se Beber, Não Case!</strong> 
+                    <div class="nota">⭐ 7,7/10</div><br>
+                    <div class="subtitulo">2017 • Comédia/Aventura<br><br></div> 
+                </a>     
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1431045/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_deadpool" target="_blank">
+                    <img src="imgs/deadpool.jpg" alt="Deadpool"> 
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+
+                    <strong class="titulo">Deadpool</strong>
+                    <div class="nota">⭐ 8,0/10</div><br>
+                    <div class="subtitulo">2016 • Ação/Comédia<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1636826/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_projeto%2520x" target="_blank">
+                    <img src="imgs/projeto-x.webp" alt="Projeto X"> 
+
+                    <img src="imgs/18.svg" alt="Classificação 16 Anos" class="classificacao-idade">
+                    
+                    <strong class="titulo">Projeto X</strong> 
+                    <div class="nota">⭐ 6,7/10</div><br>
+                    <div class="subtitulo">2012 • Comédia/Ficção policial<br><br></div> 
+                </a>
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1375670/?ref_=nv_sr_srsg_4_tt_8_nm_0_in_0_q_gente%2520g" target="_blank">
+                    <img src="imgs/gente-grande.jpg" alt="Gente Grande">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+ 
+                    <strong class="titulo">Gente Grande</strong> 
+                    <div class="nota">⭐ 6,0/10</div><br>
+                    <div class="subtitulo">2010 • Comédia/Drama<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1700841/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_festa%2520da%2520" target="_blank">
+                    <img src="imgs/festa-da-salsicha.jpg" alt="Festa da Salsicha"> 
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+
+                    <strong class="titulo">Festa da Salsicha</strong> 
+                    <div class="nota">⭐ 6,1/10</div><br>
+                    <div class="subtitulo">2016 • Comédia/Aventura<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1637725/?ref_=nv_sr_srsg_3_tt_3_nm_5_in_0_q_ted" target="_blank">
+                    <img src="imgs/ted.webp" alt="Ted"> 
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+
+                    <strong class="titulo">Ted</strong> 
+                    <div class="nota">⭐ 6,9/10</div><br>
+                    <div class="subtitulo">2012 • Comédia/Fantasia<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1564367/?ref_=nv_sr_srsg_4_tt_8_nm_0_in_0_q_esposa%2520de" target="_blank">
+                    <img src="imgs/esposa-de-mentirinha.jpg" alt="Esposa de Mentirinha"> 
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+
+                    <strong class="titulo">Esposa de Mentirinha</strong> 
+                    <div class="nota">⭐ 6,4/10</div><br>
+                    <div class="subtitulo">2011 • Comédia/Romance<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0175142/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_todo%2520mundo%2520em%2520" target="_blank">
+                    <img src="imgs/todo-mundo-em-panico.webp" alt="Todo Mundo em Pânico">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+
+                    <strong class="titulo">Todo Mundo em Pânico</strong> 
+                    <div class="nota">⭐ 6,3/10</div><br>
+                    <div class="subtitulo">2000 • Comédia/Terror<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0091042/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_curtindo%2520a%2520vida" target="_blank">
+                    <img src="imgs/curtindo-a-vida-adoidado.webp" alt="Curtindo a Vida Adoidado"> 
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+
+                    <strong class="titulo">Curtindo a Vida Adoidado</strong> 
+                    <div class="nota">⭐ 7,8/10</div><br>
+                    <div class="subtitulo">1986 • Comédia/Drama<br><br></div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    </div>
+    <div class="carrossel">
+        <h2>Terror</h2>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="https://www.imdb.com/pt/title/tt1396484/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_it%2520a%2520coisa" target="_blank">
+                        <img src="imgs/it.jpg" alt="It: A Coisa">
+
+                        <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                        
+                        <strong class="titulo">It: A Coisa</strong>
+                        <div class="nota">⭐ 7,3/10</div><br>
+                        <div class="subtitulo">2017 • Terror/Mistério<br><br></div>
+                    </a>
+                </div>
+
+                <div class="swiper-slide"> 
+                    <a href="https://www.imdb.com/pt/title/tt1457767/?ref_=nv_sr_srsg_0_tt_6_nm_0_in_0_q_invoca%25C3%25A7%25C3%25A3o%2520do%2520mal" target="_blank">
+                        <img src="imgs/invocacao-do-mal.jpg" alt="Invocação do Mal">
+
+                        <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                    
+                        <strong class="titulo">Invocação do Mal</strong> 
+                        <div class="nota">⭐ 7,5/10</div><br>
+                        <div class="subtitulo">2013 • Terror/Mistério<br><br></div> 
+                    </a> 
+                </div>
+
+                <div class="swiper-slide"> 
+                    <a href="https://www.imdb.com/pt/title/tt10403420/?ref_=nv_sr_srsg_5_tt_8_nm_0_in_0_q_terrifier" target="_blank">
+                        <img src="imgs/terrifier.webp" alt="Terrifier 2">
+
+                        <img src="imgs/18.svg" alt="Classificação 18 Anos" class="classificacao-idade">
+                        
+                        <strong class="titulo">Terrifier 2</strong>
+                        <div class="nota">⭐ 6,0/10</div><br>
+                        <div class="subtitulo">2022 • Terror/Slasher<br><br></div>
+                    </a> 
+                </div> 
+
+                <div class="swiper-slide"> 
+                    <a href="https://www.imdb.com/pt/title/tt7784604/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_heredit%25C3%25A1rio" target="_blank">
+                        <img src="imgs/hereditario.jpg" alt="Hereditário">
+
+                        <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                    
+                        <strong class="titulo">Hereditário</strong> 
+                        <div class="nota">⭐ 7,3/10</div><br>
+                        <div class="subtitulo">2018 • Terror/Mistério<br><br></div> 
+                    </a> 
+                </div> 
+
+                <div class="swiper-slide"> 
+                    <a href="https://www.imdb.com/pt/title/tt6566576/?ref_=nv_sr_srsg_4_tt_7_nm_0_in_0_q_rua%2520do%2520medo" target="_blank">
+                        <img src="imgs/rua-do-medo-1.webp" alt="Rua do Medo: 1994 - Parte 1">
+
+                        <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                    
+                        <strong class="titulo">Rua do Medo: 1994 - Parte 1</strong> 
+                        <div class="nota">⭐ 6,2/10</div><br>
+                        <div class="subtitulo">2021 • Terror/Mistério<br><br></div>
+                    </a> 
+                </div>
+
+                <div class="swiper-slide"> 
+                    <a href="https://www.imdb.com/pt/title/tt9701940/?ref_=nv_sr_srsg_7_tt_7_nm_0_in_0_q_rua%2520do%2520medo" target="_blank">
+                        <img src="imgs/rua-do-medo-2.jpg" alt="Rua do Medo: 1978 - Parte 2">
+
+                        <img src="imgs/18.svg" alt="Classificação 18 Anos" class="classificacao-idade">
+                    
+                        <strong class="titulo">Rua do Medo: 1978 - Parte 2</strong> 
+                        <div class="nota">⭐ 6,7/10</div><br>
+                        <div class="subtitulo">2021 • Terror/Mistério<br><br></div>
+                    </a> 
+                </div>
+
+                <div class="swiper-slide"> 
+                    <a href="https://www.imdb.com/pt/title/tt9701942/?ref_=nv_sr_srsg_8_tt_7_nm_0_in_0_q_rua%2520do%2520medo" target="_blank">
+                        <img src="imgs/rua-do-medo-3.jpg" alt="Rua do Medo: 1666 - Parte 3">
+                        
+                        <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+
+                        <strong class="titulo">Rua do Medo: 1666 - Parte 3</strong> 
+                        <div class="nota">⭐ 6,6/10</div><br>
+                        <div class="subtitulo">2021 • Terror/Mistério<br><br></div>
+                    </a> 
+                </div>
+
+                <div class="swiper-slide"> 
+                    <a href="https://www.imdb.com/pt/title/tt1591095/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_sobrenatural" target="_blank">
+                        <img src="imgs/sobrenatural.jpg" alt="Sobrenatural">
+
+                        <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                    
+                        <strong class="titulo">Sobrenatural</strong> 
+                        <div class="nota">⭐ 6,8/10</div><br>
+                        <div class="subtitulo">2010 • Terror/Mistério<br><br></div>
+                    </a> 
+                </div>
+
+                <div class="swiper-slide"> 
+                    <a href="https://www.imdb.com/pt/title/tt7349950/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_it%25202" target="_blank">
+                        <img src="imgs/it-2.webp" alt="It - Capítulo Dois">
+
+                        <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                    
+                        <strong class="titulo">It - Capítulo Dois</strong> 
+                        <div class="nota">⭐ 6,5/10</div><br>
+                        <div class="subtitulo">2019 • Terror/Mistério<br><br></div>
+                    </a> 
+                </div>
+            </div>
+            
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+    <div class="carrossel">
+    <h2>Ação</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt1877830/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_the%2520batman" target="_blank">
+                    <img src="imgs/batman.webp" alt="The Batman">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">The Batman</strong>
+                    <div class="nota">⭐ 7,8/10</div><br>
+                    <div class="subtitulo">2022 • Ação/Crime<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3501632/?ref_=nv_sr_srsg_0_tt_4_nm_4_in_0_q_thor%2520ra" target="_blank">
+                    <img src="imgs/thor.jpg" alt="Thor Ragnarok">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Thor Ragnarok</strong> 
+                    <div class="nota">⭐ 7,9/10</div><br>
+                    <div class="subtitulo">2017 • Ação/Ficção científica<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2527336/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_star%2520wars%2520the%2520last%2520" target="_blank">
+                    <img src="imgs/star-wars.jpg" alt="Star Wars">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Star Wars</strong>
+                    <div class="nota">⭐ 6,8/10</div><br>
+                    <div class="subtitulo">2017 • Ficção científica/Ação<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7181546/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_bailarina" target="_blank">
+                    <img src="imgs/bailarina.webp" alt="Bailarina">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Bailarina</strong> 
+                    <div class="nota">⭐ 6,9/10</div><br>
+                    <div class="subtitulo">2025 • Ação/Thriller<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3896198/?ref_=nv_sr_srsg_6_tt_6_nm_0_in_0_q_guardi%25C3%25B5es%2520da%2520gal%25C3%25A1xia" target="_blank">
+                    <img src="imgs/guardioes-galaxia.jpg" alt="Guardiões da Galáxia">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Guardiões da Galáxia</strong> 
+                    <div class="nota">⭐ 7,6/10</div><br>
+                    <div class="subtitulo">2017 • Ação/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1502397/?ref_=nv_sr_srsg_0_tt_2_nm_0_in_0_q_bad%2520boys%2520para%2520sempre" target="_blank">
+                    <img src="imgs/bad-boys.webp" alt="Bad Boys para Sempre">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Bad Boys para Sempre</strong> 
+                    <div class="nota">⭐ 6,5/10</div><br>
+                    <div class="subtitulo">2020 • Ação/Comédia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0468569/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_batman%2520o%2520caval" target="_blank">
+                    <img src="imgs/batman-cavaleiro-das-trevas.png" alt="Batman: O Cavaleiro das Trevas">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Batman: O Cavaleiro das Trevas</strong> 
+                    <div class="nota">⭐ 9,1/10</div><br>
+                    <div class="subtitulo">2008 • Ação/Crime<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1745960/?ref_=nv_sr_srsg_1_tt_5_nm_2_in_0_q_top%2520gun%2520" target="_blank">
+                    <img src="imgs/top-gun.jpg" alt="Top Gun: Maverick">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Top Gun: Maverick</strong> 
+                    <div class="nota">⭐ 8,2/10</div><br>
+                    <div class="subtitulo">2022 • Ação/Aventura<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3480822/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_vi%25C3%25BAva" target="_blank">
+                    <img src="imgs/viuva-negra.jpg" alt="Viúva Negra">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Viúva Negra</strong> 
+                    <div class="nota">⭐ 6,6/10</div><br>
+                    <div class="subtitulo">2021 • Ação/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt6263850/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_deadpool" target="_blank">
+                    <img src="imgs/deedpool-wolverine.jpg" alt="Deadpool & Wolverine">
+
+                    <img src="imgs/18.svg" alt="Classificação 18 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Deadpool & Wolverine</strong> 
+                    <div class="nota">⭐ 7,5/10</div><br>
+                    <div class="subtitulo">2024 • Ação/Comédia<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    </div>
+    <div class="carrossel">
+    <h2>Suspense</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt1130884/?ref_=nv_sr_srsg_1_tt_6_nm_1_in_0_q_ilha%2520do%2520medo" target="_blank">
+                    <img src="imgs/ilha-do-medo.webp" alt="Ilha do Medo">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Ilha do Medo</strong>
+                    <div class="nota">⭐ 8,2/10</div><br>
+                    <div class="subtitulo">2018 • Thriller/Mistério<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt4972582/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_fragmentado" target="_blank">
+                    <img src="imgs/fragmentado.jpg" alt="Fragmentado">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Fragmentado</strong> 
+                    <div class="nota">⭐ 7,3/10</div><br>
+                    <div class="subtitulo">2016 • Terror/Ficção policial<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2184339/?ref_=nv_sr_srsg_4_tt_8_nm_0_in_0_q_uma%2520noite%2520" target="_blank">
+                    <img src="imgs/uma-noite-de-crime.jpg" alt="Uma Noite de Crime">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Uma Noite de Crime</strong>
+                    <div class="nota">⭐ 5,8/10</div><br>
+                    <div class="subtitulo">2013 • Terror/Ação<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2304933/?ref_=nv_sr_srsg_0_tt_3_nm_5_in_0_q_a%2520quinta%2520onda" target="_blank">
+                    <img src="imgs/a-5-onda.webp" alt="A 5° Onda">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">A 5° Onda</strong> 
+                    <div class="nota">⭐ 5,2/10</div><br>
+                    <div class="subtitulo">2016 • Ficção científica/Ação<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt8228288/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520po%25C3%25A7o" target="_blank">
+                    <img src="imgs/o-poco.webp" alt="O Poço">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Poço</strong> 
+                    <div class="nota">⭐ 7,0/10</div><br>
+                    <div class="subtitulo">2019 • Terror/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3170832/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520quarto%2520de%2520jack" target="_blank">
+                    <img src="imgs/o-quarto-de-jack.jpeg" alt="O Quarto de Jack">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Quarto de Jack</strong> 
+                    <div class="nota">⭐ 8,1/10</div><br>
+                    <div class="subtitulo">2015 • Thriller/Mistério<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7144666/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_o%2520telefone" target="_blank">
+                    <img src="imgs/telefone-preto.jpg" alt="O Telefone Preto">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Telefone Preto</strong> 
+                    <div class="nota">⭐ 6,9/10</div><br>
+                    <div class="subtitulo">2021 • Terror/Mistério<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt5052448/?ref_=fn_t_1" target="_blank">
+                    <img src="imgs/corra.jpeg" alt="Corra!">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Corra!</strong> 
+                    <div class="nota">⭐ 7,8/10</div><br>
+                    <div class="subtitulo">2017 • Terror/Mistério<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0081505/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520ilumin" target="_blank">
+                    <img src="imgs/o-iluminado.jpeg" alt="O Iluminado">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Iluminado</strong> 
+                    <div class="nota">⭐ 8,4/10</div><br>
+                    <div class="subtitulo">2019 • Terror/Mistério<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0137523/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_clube%2520da" target="_blank">
+                    <img src="imgs/clube-da-luta.webp" alt="Clube da Luta">
+
+                    <img src="imgs/18.svg" alt="Classificação 18 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Clube da Luta</strong>
+                    <div class="nota">⭐ 8,8/10</div><br> 
+                    <div class="subtitulo">1999 • Ação/Crime<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Aventura</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt1464335/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_uncharted" target="_blank">
+                    <img src="imgs/uncharted.jpg" alt="Uncharted">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                    
+                    <strong class="titulo">Uncharted</strong>
+                    <div class="nota">⭐ 6,3/10</div><br> 
+                    <div class="subtitulo">2022 • Ação/Aventura<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1935859/?ref_=nv_sr_srsg_1_tt_4_nm_3_in_0_q_o%2520lar%2520das" target="_blank">
+                    <img src="imgs/lar-das-criancas-peculiares.jpg" alt="O Lar das Crianças Peculiares">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Lar das Crianças Peculiares</strong> 
+                    <div class="nota">⭐ 6,7/10</div><br> 
+                    <div class="subtitulo">2016 • Fantasia/Aventura<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt5950044/?ref_=nv_sr_srsg_1_tt_6_nm_0_in_1_q_Supe" target="_blank">
+                    <img src="imgs/superman.jpg" alt="Superman">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Superman</strong> 
+                    <div class="nota">⭐ 7,1/10</div><br> 
+                    <div class="subtitulo">2025 • Ação/Ficção científica<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0424774/?ref_=nv_sr_srsg_0_tt_6_nm_2_in_0_q_sharkboy" target="_blank">
+                    <img src="imgs/shark-boy-lava-girl.jpg" alt="Sharkboy e Lavagirl">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Sharkboy e Lavagirl</strong> 
+                    <div class="nota">⭐ 3,8/10</div><br> 
+                    <div class="subtitulo">2005 • Infantil/Aventura<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt8637446/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_arca%2520de%2520"target="_blank">
+                    <img src="imgs/Arca-de-Noé.jpg" alt="Arca de Noé">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Arca de Noé</strong>
+                    <div class="nota">⭐ 4,3/10</div><br> 
+                    <div class="subtitulo">2024 • Musical/Aventura<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0089218/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_os%2520go"target="_blank">
+                    <img src="imgs/os-goonies.jpg" alt="Os Goonies">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Os Goonies</strong>
+                    <div class="nota">⭐ 7,7/10</div><br> 
+                    <div class="subtitulo">1985 • Infantil/Aventura<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0268380/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_a%2520era%2520do%2520gelo"target="_blank">
+                    <img src="imgs/a-era-do-gelo.jpeg" alt="A Era do Gelo">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">A Era do Gelo</strong>
+                    <div class="nota">⭐ 7,5/10</div><br> 
+                    <div class="subtitulo">2002 • Infantil/Comédia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1649419/?ref_=nv_sr_srsg_4_tt_8_nm_0_in_0_q_o%2520impossivel"target="_blank">
+                    <img src="imgs/o-impossivel.jpg" alt="O Impossível">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Impossível</strong>
+                    <div class="nota">⭐ 7,5/10</div><br> 
+                    <div class="subtitulo">2012 • Thriller/Aventura<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3566834/?ref_=nv_sr_srsg_1_tt_8_nm_0_in_0_q_minec"target="_blank">
+                    <img src="imgs/minecraft.jpg" alt="Minecraft">
+
+                    <img src="imgs/10.png" alt="Classificação 10 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Minecraft</strong>
+                    <div class="nota">⭐ 5,6/10</div><br> 
+                    <div class="subtitulo">2025 • Fantasia/Aventura<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0458339/?ref_=nv_sr_srsg_6_tt_8_nm_0_in_0_q_capit%25C3%25A3o%2520america"target="_blank">
+                    <img src="imgs/cap-america.webp" alt="Capitão América: O Primeiro Vingador">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Capitão América: O Primeiro Vingador</strong>
+                    <div class="nota">⭐ 6,9/10</div><br> 
+                    <div class="subtitulo">2011 • Ação/Ficção científica<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Com a família</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0120630/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_a%2520fuga%2520das%2520ga" target="_blank">
+                    <img src="imgs/a-fuga-das-galinhas.jpg" alt="A Fuga das Galinhas">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                
+                    <strong class="titulo">A Fuga das Galinhas</strong>
+                    <div class="nota">⭐ 7,1/10</div><br> 
+                    <div class="subtitulo">2000 • Infantil/Comédia<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt6718170/?ref_=nv_sr_srsg_2_tt_8_nm_0_in_0_q_super%2520mario" target="_blank">
+                    <img src="imgs/super-mario-bros.jpg" alt="Super Mario Bros. O Filme">
+
+                    <img src="imgs/10.png" alt="Classificação 10 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Super Mario Bros. O Filme</strong> 
+                    <div class="nota">⭐ 7,0/10</div><br> 
+                    <div class="subtitulo">2023 • Infantil/Comédia<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt10872600/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_no%2520wa" target="_blank">
+                    <img src="imgs/homem-aranha-sem-volta-para-casa.jpg" alt="Homem-Aranha: Sem Volta para Casa">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Homem-Aranha: Sem Volta para Casa</strong> 
+                    <div class="nota">⭐ 8,2/10</div><br> 
+                    <div class="subtitulo">2021 • Ação/Fantasia<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt18259086/?ref_=nv_sr_srsg_1_tt_4_nm_3_in_0_q_sonic%2520" target="_blank">
+                    <img src="imgs/sonic-3.webp" alt="Sonic 3 - O Filme">
+
+                    <img src="imgs/10.png" alt="Classificação 10 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Sonic 3 - O Filme</strong> 
+                    <div class="nota">⭐ 6,9/10</div><br> 
+                    <div class="subtitulo">2024 • Comédia/Aventura<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1860353/?ref_=nv_sr_srsg_0_tt_3_nm_5_in_0_q_turbo%2520"target="_blank">
+                    <img src="imgs/turbo.jpg" alt="Turbo">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Turbo</strong>
+                    <div class="nota">⭐ 6,4/10</div><br> 
+                    <div class="subtitulo">2013 • Esporte/Aventura<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt14205554/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_guerreiras"target="_blank">
+                    <img src="imgs/guerreiras-do-kpop.webp" alt="Guerreiras do K-Pop">
+
+                    <img src="imgs/10.png" alt="Classificação 10 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Guerreiras do K-Pop</strong>
+                    <div class="nota">⭐ 7,6/10</div><br> 
+                    <div class="subtitulo">2025 • Musical/Ação<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0126029/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_shrek"target="_blank">
+                    <img src="imgs/sherk.png" alt="Shrek">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Shrek</strong>
+                    <div class="nota">⭐ 7,9/10</div><br> 
+                    <div class="subtitulo">2001 • Comédia/Fantasia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0952640/?ref_=nv_sr_srsg_0_tt_4_nm_4_in_0_q_alvin"target="_blank">
+                    <img src="imgs/alvin.webp" alt="Alvin e os Esquilos">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Alvin e os Esquilos</strong>
+                    <div class="nota">⭐ 5,3/10</div><br> 
+                    <div class="subtitulo">2007 • Infantil/Comédia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0117705/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_space%2520jam"target="_blank">
+                    <img src="imgs/space-jam.jpg" alt="Space Jam: O Jogo do Século">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Space Jam: O Jogo do Século</strong>
+                    <div class="nota">⭐ 6,5/10</div><br> 
+                    <div class="subtitulo">1996 • Infantil/Esporte<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3554046/?ref_=nv_sr_srsg_3_tt_7_nm_1_in_0_q_space%2520jam"target="_blank">
+                    <img src="imgs/space-jam-2.jpg" alt="Space Jam: Um Novo Legado">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Space Jam: Um Novo Legado</strong>
+                    <div class="nota">⭐ 4,5/10</div><br> 
+                    <div class="subtitulo">2021 • Infantil/Comédia<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Romance</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt3846674/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_para%2520todos%2520os%2520garotos" target="_blank">
+                    <img src="imgs/para-todos-os-garotos-que-ja-amei.webp" alt="Para todos os garotos que já amei">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Para Todos os Garotos que Já Amei</strong>
+                    <div class="nota">⭐ 7,0/10</div><br> 
+                    <div class="subtitulo">2018 • Romance/Comédia<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0343660/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_como%2520se%2520fosse" target="_blank">
+                    <img src="imgs/como-se-fosse-a-primeira-vez.webp" alt="Como Se Fosse a Primeira Vez">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Como Se Fosse a Primeira Vez</strong> 
+                    <div class="nota">⭐ 6,8/10</div><br> 
+                    <div class="subtitulo">2004 • Comédia/Romance<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2582846/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_a%2520culpa%2520%25C3%25A9%2520das%2520estrelas" target="_blank">
+                    <img src="imgs/a-culpa-e-das-estrelas.jpg" alt="A Culpa é das Estrelas">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">A Culpa é das Estrelas</strong>
+                    <div class="nota">⭐ 7,6/10</div><br> 
+                    <div class="subtitulo">2014 • Romance/Comédia<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt8201170/?ref_=nv_sr_srsg_0_tt_7_nm_0_in_0_q_o%2520date%2520perfeito" target="_blank">
+                    <img src="imgs/o-date-perfeito.webp" alt="O Date Perfeito">
+
+                    <img src="imgs/10.png" alt="Classificação 10 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Date Perfeito</strong> 
+                    <div class="nota">⭐ 5,8/10</div><br> 
+                    <div class="subtitulo">2019 • Comédia/Romance<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0147800/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_10%2520coisas%2520que%2520" target="_blank">
+                    <img src="imgs/10-coisas-que-eu-odeio-em-voce.webp" alt="10 Coisas Que Eu Odeio Em Você">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">10 Coisas Que Eu Odeio Em Você</strong>
+                    <div class="nota">⭐ 7,4/10</div><br>  
+                    <div class="subtitulo">1999 • Comédia/Romance<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3799232/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_a%2520barraca" target="_blank">
+                    <img src="imgs/barraca-do-beijo.jpg" alt="A Barraca do Beijo">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">A Barraca do Beijo</strong> 
+                    <div class="nota">⭐ 5,9/10</div><br> 
+                    <div class="subtitulo">2018 • Romance/Comédia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt6048930/" target="_blank">
+                    <img src="imgs/nu.jpg" alt="Nu">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Nu</strong> 
+                    <div class="nota">⭐ 5,4/10</div><br>
+                    <div class="subtitulo">2017 • Comédia/Romance<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0337592/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_amor%2520de%2520aluguel" target="_blank">
+                    <img src="imgs/amor-de-aluguel.webp" alt="Amor de Aluguel">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Amor de Aluguel</strong> 
+                    <div class="nota">⭐ 5,3/10</div><br>
+                    <div class="subtitulo">2003 • Comédia/Romance<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt14463484/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_atraves%2520da%2520minha%2520janela" target="_blank">
+                    <img src="imgs/atraves-da-minha-janela.jpg" alt="Através da Minha Janela">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Através da Minha Janela</strong> 
+                    <div class="nota">⭐ 5,5/10</div><br>
+                    <div class="subtitulo">2022 • Romance/Comédia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt28510079/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_Sua%2520culpa" target="_blank">
+                    <img src="imgs/sua-culpa.jpeg" alt="Sua Culpa">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Sua Culpa</strong> 
+                    <div class="nota">⭐ 5,2/10</div><br>
+                    <div class="subtitulo">2024 • Romance/Drama<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Baseado na vida real</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt24326062/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_mamonas%2520a" target="_blank">
+                    <img src="imgs/mamonas-assassinas.jpg" alt="Mamonas Assassinas - O Filme">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Mamonas Assassinas - O Filme</strong>
+                    <div class="nota">⭐ 4,7/10</div><br>
+                    <div class="subtitulo">2023 • Comédia/Biografia<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt15398776/?ref_=nv_sr_srsg_0_tt_4_nm_4_in_0_q_oppenheimer" target="_blank">
+                    <img src="imgs/oppenheimer.jpeg" alt="Oppenheimer">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Oppenheimer</strong> 
+                    <div class="nota">⭐ 8,3/10</div><br>
+                    <div class="subtitulo">2023 • Suspense<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1398426/?ref_=nv_sr_srsg_0_tt_1_nm_0_in_0_q_Straight%2520Outta%2520Compton%253A%2520A%2520Hist%25C3%25B3" target="_blank">
+                    <img src="imgs/straight-outta-compton.jpg" alt="Straight Outta Compton: A História do N.W.A.">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Straight Outta Compton: A História do N.W.A.</strong>
+                    <div class="nota">⭐ 7,8/10</div><br>
+                    <div class="subtitulo">2015 • Musical/Crime<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120338/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_titanic" target="_blank">
+                    <img src="imgs/titanic.jpg" alt="Titanic">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Titanic</strong> 
+                    <div class="nota">⭐ 7,9/10</div><br>
+                    <div class="subtitulo">1997 • Romance/Aventura<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt15060662/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_nosso%2520sonho" target="_blank">
+                    <img src="imgs/nosso-sonho.jpg" alt="Nosso Sonho">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Nosso Sonho</strong> 
+                    <div class="nota">⭐ 7,2/10</div><br>
+                    <div class="subtitulo">2023 • Musical/Comédia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0454921/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_a%2520procura%2520da%2520felicidade" target="_blank">
+                    <img src="imgs/a-procura-da-felicidade.jpg" alt="À Procura da Felicidade">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                    
+                    <strong class="titulo">À Procura da Felicidade</strong> 
+                    <div class="nota">⭐ 8,0/10</div><br>
+                    <div class="subtitulo">2006 • Infantil/Drama<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2084970/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520jogo%2520da%2520imita%25C3%25A7%25C3%25A3o" target="_blank">
+                    <img src="imgs/jogo-da-imitacao.jpg" alt="O Jogo da Imitação">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Jogo da Imitação</strong> 
+                    <div class="nota">⭐ 8,0/10</div><br>
+                    <div class="subtitulo">2014 • Thriller/Guerra<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7533152/?ref_=nv_sr_srsg_2_tt_8_nm_0_in_0_q_o%2520menino%2520que" target="_blank">
+                    <img src="imgs/o-menino-vento.webp" alt="O Menino Que Descobriu o Vento">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Menino Que Descobriu o Vento</strong> 
+                    <div class="nota">⭐ 7,6/10</div><br>
+                    <div class="subtitulo">2019 • Drama/História<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0363163/?ref_=fn_t_1" target="_blank">
+                    <img src="imgs/as-ultimas-horas-de-hitler.jpg" alt="A Queda! As Últimas Horas de Hitler">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">A Queda! As Últimas Horas de Hitler</strong> 
+                    <div class="nota">⭐ 8,2/10</div><br>
+                    <div class="subtitulo">2004 • Guerra/Documentário<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0253474/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520pianista" target="_blank">
+                    <img src="imgs/o-pianista.jpg" alt="O Pianista">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Pianista</strong> 
+                    <div class="nota">⭐ 8,5/10</div><br>
+                    <div class="subtitulo">2002 • Guerra/Drama<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Drama</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0914798/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520menino%2520do%2520pijama" target="_blank">
+                    <img src="imgs/o-menino-do-pijama-listrado.jpg" alt="O Menino do Pijama Listrado">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">O Menino do Pijama Listrado</strong>
+                    <div class="nota">⭐ 7,7/10</div><br>
+                    <div class="subtitulo">2008 • Guerra/Thriller<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt6472976/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_a%2520cinco%2520passos%2520de" target="_blank">
+                    <img src="imgs/a-cinco-passos-de-voces.jpg" alt="A Cinco Passos de Você">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">A Cinco Passos de Você</strong> 
+                    <div class="nota">⭐ 7,2/10</div><br>
+                    <div class="subtitulo">2019 • Romance/Drama<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2674426/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_como%2520eu%2520era%2520antes%2520de" target="_blank">
+                    <img src="imgs/como-eu-era-antes-de-voce.jpg" alt="Como Eu Era de Você">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Como Eu Era Antes de Você</strong>
+                    <div class="nota">⭐ 7,4/10</div><br>
+                    <div class="subtitulo">2016 • Romance/Drama<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt7083526/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520milagre%2520da%2520fe" target="_blank">
+                    <img src="imgs/o-milagre-da-fe.jpg" alt="O Milagre da Fé">
+
+                    <img src="imgs/10.png" alt="Classificação 10 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">O Milagre da Fé</strong> 
+                    <div class="nota">⭐ 6,3/10</div><br>
+                    <div class="subtitulo">2019 • Drama/Melodrama<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt10431500/?ref_=nv_sr_srsg_0_tt_3_nm_0_in_0_q_milagre%2520na%2520cela" target="_blank">
+                    <img src="imgs/milagre-na-cela-7.jpg" alt="Milagre na Cela 7">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                    
+                    <strong class="titulo">Milagre na Cela 7</strong> 
+                    <div class="nota">⭐ 8,2/10</div><br>
+                    <div class="subtitulo">2019 • Drama/Melodrama<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0120689/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_a%2520espera" target="_blank">
+                    <img src="imgs/a-espera-de-um-milagre.jpg" alt="À Espera de um Milagre">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">À Espera de um Milagre</strong> 
+                    <div class="nota">⭐ 8,6/10</div><br>
+                    <div class="subtitulo">1999 • Crime/Fantasia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0086250/?ref_=nv_sr_srsg_0_tt_6_nm_2_in_0_q_scarface" target="_blank">
+                    <img src="imgs/scarface.jpg" alt="Scarface">
+
+                    <img src="imgs/18.svg" alt="Classificação 18 Anos" class="classificacao-idade">
+                    
+                    <strong class="titulo">Scarface</strong> 
+                    <div class="nota">⭐ 8,3/10</div><br>
+                    <div class="subtitulo">1983 • Crime/Thriller<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1675434/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_intocaveis" target="_blank">
+                    <img src="imgs/intocaveis.webp" alt="Intocáveis">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Intocáveis</strong> 
+                    <div class="nota">⭐ 8,5/10</div><br>
+                    <div class="subtitulo">2011 • Comédia/Drama<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0068646/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520poderoso%2520chef%25C3%25A3o" target="_blank">
+                    <img src="imgs/poderoso-chefao.jpg" alt="O Poderoso Chefão">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Poderoso Chefão</strong> 
+                    <div class="nota">⭐ 9,2/10</div><br>
+                    <div class="subtitulo">1972 • Crime/Ficção policial<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0109830/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_forrest%2520gump" target="_blank">
+                    <img src="imgs/forrest-gump.jpg" alt="Forrest Gump: O Contador de Histórias">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Forrest Gump: O Contador de Histórias</strong> 
+                    <div class="nota">⭐ 8,8/10</div><br>
+                    <div class="subtitulo">1994 • Comédia/Romance<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Campeões de bilheteria</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0499549/?ref_=nv_sr_srsg_4_tt_7_nm_0_in_0_q_avatar" target="_blank">
+                    <img src="imgs/avatar.jpeg" alt="Avatar">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Avatar</strong>
+                    <div class="nota">⭐ 7,9/10</div><br>
+                    <div class="subtitulo">2009 • Ficção científica/Ação<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1630029/?ref_=nv_sr_srsg_8_tt_7_nm_0_in_0_q_avatar" target="_blank">
+                    <img src="imgs/avatar-2.jpeg" alt="Avatar: O Caminho da Água">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Avatar: O Caminho da Água</strong> 
+                    <div class="nota">⭐ 7,5/10</div><br>
+                    <div class="subtitulo">2022 • Ação/Ficção científica<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2488496/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_star%2520wars%2520o%2520despertar" target="_blank">
+                    <img src="imgs/star-wars-o-despertar-da-forca.jpg" alt="Star Wars: O Despertar da Força">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Star Wars: O Despertar da Força</strong>
+                    <div class="nota">⭐ 7,7/10</div><br>
+                    <div class="subtitulo">2015 • Ficção científica/Ação<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt22022452/?ref_=nv_sr_srsg_4_tt_8_nm_0_in_0_q_divertidamente" target="_blank">
+                    <img src="imgs/divertidamente-2.png" alt="Divertida Mente 2">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                
+                    <strong class="titulo">Divertida Mente 2</strong> 
+                    <div class="nota">⭐ 7,5/10</div><br>
+                    <div class="subtitulo">2024 • Infantil/Comédia<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1825683/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_pantera%2520negra" target="_blank">
+                    <img src="imgs/pantera-negra.jpg" alt="Pantera Negra">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Pantera Negra</strong> 
+                    <div class="nota">⭐ 7,3/10</div><br>
+                    <div class="subtitulo">2018 • Ação/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt4520988/?ref_=nv_sr_srsg_1_tt_8_nm_0_in_0_q_frozen%25202" target="_blank">
+                    <img src="imgs/frozen-2.jpg" alt="Frozen 2">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Frozen 2</strong> 
+                    <div class="nota">⭐ 6,8/10</div><br>
+                    <div class="subtitulo">2019 • Infantil/Fantasia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1517268/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_barbie" target="_blank">
+                    <img src="imgs/barbie.jpg" alt="Barbie">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Barbie</strong> 
+                    <div class="nota">⭐ 6,8/10</div><br>
+                    <div class="subtitulo">2023 • Comédia/Fantasia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3606756/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_os%2520incriveis" target="_blank">
+                    <img src="imgs/os-incriveis-2.png" alt="Os Incríveis 2">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Os Incríveis 2</strong> 
+                    <div class="nota">⭐ 7,5/10</div><br>
+                    <div class="subtitulo">2018 • Infantil/Ação<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1300854/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_homem%2520de%2520ferro" target="_blank">
+                    <img src="imgs/homem-de-ferro-3.jpg" alt="Homem de Ferro 3">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Homem de Ferro 3</strong> 
+                    <div class="nota">⭐ 7,1/10</div><br>
+                    <div class="subtitulo">2013 • Ação/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2293640/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_minions" target="_blank">
+                    <img src="imgs/minions.webp" alt="Minions">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Minions</strong> 
+                    <div class="nota">⭐ 6,4/10</div><br>
+                    <div class="subtitulo">2015 • Infantil/Comédia<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Ficção científica</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0816692/?ref_=nv_sr_srsg_6_tt_8_nm_0_in_0_q_intere" target="_blank">
+                    <img src="imgs/interestelar.jpg" alt="Interestelar">
+
+                    <img src="imgs/10.png" alt="Classificação 10 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Interestelar</strong>
+                    <div class="nota">⭐ 8,7/10</div><br>
+                    <div class="subtitulo">2014 • Ficção científica/Aventura<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3315342/?ref_=nv_sr_srsg_3_tt_2_nm_6_in_0_q_logan" target="_blank">
+                    <img src="imgs/logan.jpeg" alt="Logan">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Logan</strong> 
+                    <div class="nota">⭐ 8,1/10</div><br>
+                    <div class="subtitulo">2017 • Ação/Ficção científica<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3450958/?ref_=nv_sr_srsg_9_tt_8_nm_0_in_0_q_planeta%2520dos%2520macacos" target="_blank">
+                    <img src="imgs/planeta-dos-macacos.jpg" alt="Planeta dos Macacos: A Guerra">
+
+                    <img src="imgs/14.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Planeta dos Macacos: A Guerra</strong>
+                    <div class="nota">⭐ 7,4/10</div><br>
+                    <div class="subtitulo">2016 • Ação/Ficção científica<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0910970/?ref_=nv_sr_srsg_2_tt_6_nm_2_in_0_q_wall-e" target="_blank">
+                    <img src="imgs/walle.webp" alt="WALL-E">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                
+                    <strong class="titulo">WALL-E</strong> 
+                    <div class="nota">⭐ 8,4/10</div><br>
+                    <div class="subtitulo">2008 • Infantil/Ficção científica<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0083866/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_et%2520o%2520extra" target="_blank">
+                    <img src="imgs/et.jpg" alt="E.T. O Extraterrestre">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">E.T. O Extraterrestre</strong> 
+                    <div class="nota">⭐ 7,9/10</div><br>
+                    <div class="subtitulo">1982 • Infantil/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0133093/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_matrix" target="_blank">
+                    <img src="imgs/matrix.jpg" alt="Matrix">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Matrix</strong> 
+                    <div class="nota">⭐ 8,7/10</div><br>
+                    <div class="subtitulo">1999 • Ação/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0088247/?ref_=nv_sr_srsg_1_tt_7_nm_0_in_0_q_o%2520exterminador%2520do%2520futuro" target="_blank">
+                    <img src="imgs/o-exterminador-do-futuro.jpg" alt="O Exterminador do Futuro">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Exterminador do Futuro</strong> 
+                    <div class="nota">⭐ 8,1/10</div><br>
+                    <div class="subtitulo">1984 • Ação/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0107290/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_jurassic" target="_blank">
+                    <img src="imgs/jurassic-park.jpg" alt="Jurassic Park - O Parque dos Dinossauros">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Jurassic Park - O Parque dos Dinossauros</strong> 
+                    <div class="nota">⭐ 8,2/10</div><br>
+                    <div class="subtitulo">1993 • Aventura/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0088763/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_de%2520volta%2520para%2520" target="_blank">
+                    <img src="imgs/de-volta-para-o-futuro.jpg" alt="De Volta para o Futuro">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">De Volta para o Futuro</strong> 
+                    <div class="nota">⭐ 8,5/10</div><br>
+                    <div class="subtitulo">1985 • Infantil/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1856101/?ref_=nv_sr_srsg_3_tt_7_nm_1_in_0_q_blade" target="_blank">
+                    <img src="imgs/blade-runner.jpg" alt="Blade Runner 2049">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Blade Runner 2049</strong> 
+                    <div class="nota">⭐ 8,0/10</div><br>
+                    <div class="subtitulo">2017 • Ficção científica/Ação<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Nacionais</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0317248/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_cidade%2520de%2520de" target="_blank">
+                    <img src="imgs/cidade-de-deus.jpg" alt="Cidade de Deus">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Cidade de Deus</strong>
+                    <div class="nota">⭐ 8,6/10</div><br>
+                    <div class="subtitulo">2002 • Crime/Drama<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0271383/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520auto%2520da%2520" target="_blank">
+                    <img src="imgs/o-auto-da-compadecida.webp" alt="O Auto da Compadecida">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Auto da Compadecida</strong> 
+                    <div class="nota">⭐ 8,6/10</div><br>
+                    <div class="subtitulo">2000 • Comédia/Aventura<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0861739/?ref_=nv_sr_srsg_0_tt_5_nm_0_in_0_q_tropa%2520de%2520elite" target="_blank">
+                    <img src="imgs/tropa-de-elite.jpeg" alt="Tropa de Elite">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Tropa de Elite</strong>
+                    <div class="nota">⭐ 8,0/10</div><br>
+                    <div class="subtitulo">2007 • Crime/Ação<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0293007/?ref_=nv_sr_srsg_0_tt_3_nm_5_in_0_q_carandi" target="_blank">
+                    <img src="imgs/carandiru.jpg" alt="Carandiru: O Filme">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Carandiru: O Filme</strong> 
+                    <div class="nota">⭐ 7,6/10</div><br>
+                    <div class="subtitulo">2003 • Crime/Drama<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt14961016/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_ainda%2520es" target="_blank">
+                    <img src="imgs/ainda-estou-aqui.jpeg" alt="Ainda Estou Aqui">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Ainda Estou Aqui</strong> 
+                    <div class="nota">⭐ 8,1/10</div><br>
+                    <div class="subtitulo">2024 • Drama/drama histórico<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0140888/?ref_=nv_sr_srsg_0_tt_7_nm_0_in_0_q_central%2520do%2520brasil" target="_blank">
+                    <img src="imgs/central-do-brasil.jpeg" alt="Central do Brasil">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Central do Brasil</strong> 
+                    <div class="nota">⭐ 8,0/10</div><br>
+                    <div class="subtitulo">1998 • Drama/Filme de estrada<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1555149/?ref_=nv_sr_srsg_2_tt_5_nm_0_in_0_q_tropa%2520de%2520elite" target="_blank">
+                    <img src="imgs/tropa-de-elite-2.jpeg" alt="Tropa de Elite 2: O Inimigo Agora é Outro">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Tropa de Elite 2: O Inimigo Agora é Outro</strong> 
+                    <div class="nota">⭐ 8,0/10</div><br>
+                    <div class="subtitulo">2010 • Ação/Thriller<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2464018/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_minha%2520mae" target="_blank">
+                    <img src="imgs/minha-mae-e-uma-peca.jpg" alt="Minha Mãe É uma Peça">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                    
+                    <strong class="titulo">Minha Mãe É uma Peça</strong> 
+                    <div class="nota">⭐ 6,9/10</div><br>
+                    <div class="subtitulo">2013 • Comédia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2762506/?ref_=nv_sr_srsg_0_tt_6_nm_2_in_0_q_bacur" target="_blank">
+                    <img src="imgs/bacurau.jpeg" alt="Bacurau">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Bacurau</strong> 
+                    <div class="nota">⭐ 7,3/10</div><br>
+                    <div class="subtitulo">2019 • Faroeste/Ficção científica<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt30868610/?ref_=nv_sr_srsg_0_tt_3_nm_5_in_0_q_chico%2520bento" target="_blank">
+                    <img src="imgs/chico-bento.jpg" alt="Chico Bento e a Goiabeira Maraviósa">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Chico Bento e a Goiabeira Maraviósa</strong> 
+                    <div class="nota">⭐ 7,4/10</div><br>
+                    <div class="subtitulo">2024 • Aventura<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Sagas imperdíveis</h2> 
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0232500/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_velozes" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-1.webp" alt="Velozes & Furiosos">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Velozes & Furiosos</strong>
+                    <div class="nota">⭐ 6,8/10</div><br>
+                    <div class="subtitulo">2001 • Ação/Crime<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0322259/?ref_=nv_sr_srsg_11_tt_8_nm_0_in_0_q_velozes" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-2.jpg" alt="+ Velozes + Furiosos">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">+ Velozes + Furiosos</strong> 
+                    <div class="nota">⭐ 5,9/10</div><br>
+                    <div class="subtitulo">2003 • Ação/Crime<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0463985/?ref_=nv_sr_srsg_0_tt_7_nm_0_in_0_q_velozes%2520e%2520furiosos%2520desafio%2520em" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-3.webp" alt="Velozes & Furiosos: Desafio em Tóquio">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Velozes & Furiosos: Desafio em Tóquio</strong>
+                    <div class="nota">⭐ 6,1/10</div><br>
+                    <div class="subtitulo">2006 • Ação/Crime<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1013752/?ref_=nv_sr_srsg_6_tt_8_nm_0_in_0_q_velozes%2520" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-4.webp" alt="Velozes e Furiosos 4">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Velozes e Furiosos 4</strong>
+                    <div class="nota">⭐ 6,5/10</div><br> 
+                    <div class="subtitulo">2009 • Ação/Crime<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1596343/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_velozes%25205" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-5.webp" alt="Velozes e Furiosos 5: Operação Rio">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Velozes e Furiosos 5: Operação Rio</strong> 
+                    <div class="nota">⭐ 7,3/10</div><br> 
+                    <div class="subtitulo">2011 • Ação/Crime<br><br></div>
+                </a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1905041/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_velozes%25206" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-6.webp" alt="Velozes e Furiosos 6">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Velozes e Furiosos 6</strong> 
+                    <div class="nota">⭐ 7,0/10</div><br>
+                    <div class="subtitulo">2013 • Ação/Thriller<br><br></div>
+                </a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2820852/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_velozes%25207" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-7.webp" alt="Velozes & Furiosos 7">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Velozes & Furiosos 7</strong> 
+                    <div class="nota">⭐ 7,1/10</div><br>
+                    <div class="subtitulo">2015 • Ação/Thriller<br><br></div>
+                </a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt4630562/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_velozes%25208" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-8.webp" alt="Velozes e Furiosos 8">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Velozes e Furiosos 8</strong> 
+                    <div class="nota">⭐ 6,6/10</div><br>
+                    <div class="subtitulo">2017 • Ação/Thriller<br><br></div>
+                </a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt5433138/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_velozes%25209" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-9.jpg" alt="Velozes e Furiosos 9">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Velozes e Furiosos 9</strong> 
+                    <div class="nota">⭐ 5,2/10</div><br>
+                    <div class="subtitulo">2021 • Ação/Thriller<br><br></div>
+                </a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt5433140/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_velozes%2520" target="_blank">
+                    <img src="imgs/velozes-e-furiosos-10.jpg" alt="Velozes e Furiosos 10">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Velozes e Furiosos 10</strong> 
+                    <div class="nota">⭐ 5,7/10</div><br>
+                    <div class="subtitulo">2023 • Ação/Crime<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <div class="carrossel">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0848228/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_os%2520vingadores" target="_blank">
+                    <img src="imgs/vingadores-1.webp" alt="Os Vingadores">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Os Vingadores</strong>
+                    <div class="nota">⭐ 8,0/10</div><br>
+                    <div class="subtitulo">2012 • Ação/Aventura<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt2395427/?ref_=nv_sr_srsg_10_tt_8_nm_0_in_0_q_vingadores" target="_blank">
+                    <img src="imgs/vingadores-2.jpg" alt="Vingadores: Era de Ultron">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Vingadores: Era de Ultron</strong> 
+                    <div class="nota">⭐ 7,3/10</div><br>
+                    <div class="subtitulo">2015 • Ação/Ficção científica<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt4154756/?ref_=nv_sr_srsg_7_tt_8_nm_0_in_0_q_vingadores" target="_blank">
+                    <img src="imgs/vingadores-3.jpg" alt="Vingadores: Guerra Infinita">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Vingadores: Guerra Infinita</strong>
+                    <div class="nota">⭐ 8,4/10</div><br>
+                    <div class="subtitulo">2018 • Ação/Ficção científica<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt4154796/?ref_=nv_sr_srsg_4_tt_8_nm_0_in_0_q_vinga" target="_blank">
+                    <img src="imgs/vingadores-4.jpg" alt="Vingadores: Ultimato">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Vingadores: Ultimato</strong> 
+                    <div class="nota">⭐ 8,4/10</div><br>
+                    <div class="subtitulo">2019 • Ação/Ficção científica<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt21357150/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_vingadores" target="_blank">
+                    <img src="imgs/vingadores-5.webp" alt="Vingadores: Doomsday">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Vingadores: Doomsday</strong> 
+                    <div class="nota">⭐ ?/10</div><br>
+                    <div class="subtitulo">2026 • Ficção científica/Ação<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+<div class="carrossel">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0241527/?ref_=nv_sr_srsg_0_tt_5_nm_3_in_0_q_harry" target="_blank">
+                    <img src="imgs/harry-1.png" alt="Harry Potter e a Pedra Filosofal">
+
+                    <img src="imgs/10.png" alt="Classificação 10 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Harry Potter e a Pedra Filosofal</strong>
+                    <div class="nota">⭐ 7,7/10</div><br>
+                    <div class="subtitulo">2001 • Infantil/Fantasia<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0295297/" target="_blank">
+                    <img src="imgs/harry-2.png" alt="Harry Potter e a Câmara Secreta">
+
+                    <img src="imgs/10.png" alt="Classificação 10 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Harry Potter e a Câmara Secreta</strong> 
+                    <div class="nota">⭐ 7,5/10</div><br>
+                    <div class="subtitulo">2002 • Infantil/Fantasia<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0304141/" target="_blank">
+                    <img src="imgs/harry-3.jpg" alt="Harry Potter e o Prisioneiro de Azkaban">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                
+                    <strong class="titulo">Harry Potter e o Prisioneiro de Azkaban</strong>
+                    <div class="nota">⭐ 7,9/10</div><br>
+                    <div class="subtitulo">2004 • Infantil/Fantasia<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0330373/" target="_blank">
+                    <img src="imgs/harry-4.jpg" alt="Harry Potter e o Cálice de Fogo">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Harry Potter e o Cálice de Fogo</strong> 
+                    <div class="nota">⭐ 7,7/10</div><br>
+                    <div class="subtitulo">2005 • Infantil/Fantasia<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0373889/" target="_blank">
+                    <img src="imgs/harry-5.png" alt="Harry Potter e a Ordem da Fênix">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Harry Potter e a Ordem da Fênix</strong> 
+                    <div class="nota">⭐ 7,5/10</div><br>
+                    <div class="subtitulo">2007 • Fantasia/Aventura<br><br></div>
+                </a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0417741/" target="_blank">
+                    <img src="imgs/harry-6.jpg" alt="Harry Potter e o Enigma do Príncipe">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Harry Potter e o Enigma do Príncipe</strong> 
+                    <div class="nota">⭐ 7,6/10</div><br>
+                    <div class="subtitulo">2009 • Infantil/Fantasia<br><br></div>
+                </a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0926084/" target="_blank">
+                    <img src="imgs/harry-7.png" alt="Harry Potter e as Relíquias da Morte - Parte 1">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Harry Potter e as Relíquias da Morte - Parte 1</strong> 
+                    <div class="nota">⭐ 7,7/10</div><br>
+                    <div class="subtitulo">2010 • Infantil/Fantasia<br><br></div>
+                </a> 
+            </div>
+            
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1201607/" target="_blank">
+                    <img src="imgs/harry-8.png" alt="Harry Potter e as Relíquias da Morte - Parte 2">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Harry Potter e as Relíquias da Morte - Parte 2</strong> 
+                    <div class="nota">⭐ 8,1/10</div><br>
+                    <div class="subtitulo">2011 • Fantasia/Aventura<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+</div>
+    <div class="carrossel">
+    <h2>Séries</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt4574334/?ref_=nv_sr_srsg_1_tt_6_nm_1_in_0_q_str" target="_blank">
+                    <img src="imgs/stranger-things.jpg" alt="Stranger Things">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Stranger Things</strong>
+                    <div class="nota">⭐ 8,6/10</div><br>
+                    <div class="subtitulo">2016 • Terror<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0903747/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_break" target="_blank">
+                    <img src="imgs/breaking-bad.jpg" alt="Breaking Bad">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Breaking Bad</strong> 
+                    <div class="nota">⭐ 9,5/10</div><br>
+                    <div class="subtitulo">2013 • Drama<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1312171/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_the%2520umbre" target="_blank">
+                    <img src="imgs/umbrella-academy.jpg" alt="The Umbrella Academy">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">The Umbrella Academy</strong>
+                    <div class="nota">⭐ 7,8/10</div><br>
+                    <div class="subtitulo">2019 • Drama<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt9184994/?ref_=nv_sr_srsg_0_tt_1_nm_0_in_0_q_como%2520vender%2520drogas" target="_blank">
+                    <img src="imgs/como-vender-drogas-online.jpg" alt="Como Vender Drogas Online (Rápido)">
+
+                    <img src="imgs/18.svg" alt="Classificação 18 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Como Vender Drogas Online (Rápido)</strong> 
+                    <div class="nota">⭐ 7,8/10</div><br>
+                    <div class="subtitulo">2019 • Drama<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt10795658/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_alice%2520in" target="_blank">
+                    <img src="imgs/alice-in-borderland.jpg" alt="Alice in Borderland">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Alice in Borderland</strong> 
+                    <div class="nota">⭐ 7,8/10</div><br>
+                    <div class="subtitulo">2020 • Thriller<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0386676/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_the%2520office" target="_blank">
+                    <img src="imgs/the-office.webp" alt="The Office">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">The Office</strong> 
+                    <div class="nota">⭐ 9,0/10</div><br>
+                    <div class="subtitulo">2005 • Sitcom<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0773262/?ref_=nv_sr_srsg_1_tt_4_nm_3_in_0_q_dexter" target="_blank">
+                    <img src="imgs/dexter.webp" alt="Dexter">
+
+                    <img src="imgs/18.svg" alt="Classificação 18 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Dexter</strong> 
+                    <div class="nota">⭐ 8,6/10</div><br>
+                    <div class="subtitulo">2006 • Drama<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0870090/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_cidade%2520dos%2520homens" target="_blank">
+                    <img src="imgs/cidade-dos-homens.webp" alt="Cidade dos Homens">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Cidade dos Homens</strong> 
+                    <div class="nota">⭐ 7,2/10</div><br>
+                    <div class="subtitulo">2002 • Drama<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt19244304/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_it%2520bem%2520vindos%2520a%2520derry" target="_blank">
+                    <img src="imgs/it-derry.webp" alt="It: Bem-Vindos a Derry">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">It: Bem-Vindos a Derry</strong> 
+                    <div class="nota">⭐ 7,8/10</div><br>
+                    <div class="subtitulo">2025 • Terror<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt3581920/?ref_=nv_sr_srsg_4_tt_7_nm_0_in_0_q_the%2520last" target="_blank">
+                    <img src="imgs/the-last-of-us.webp" alt="The Last of Us">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">The Last of Us</strong> 
+                    <div class="nota">⭐ 8,5/10</div><br>
+                    <div class="subtitulo">2023 • Drama<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Animação</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt0114709/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_toy%2520story" target="_blank">
+                    <img src="imgs/toy-story.jpg" alt="Toy Story">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                
+                    <strong class="titulo">Toy Story</strong>
+                    <div class="nota">⭐ 8,3/10</div><br>
+                    <div class="subtitulo">1995 • Infantil/Comédia<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0424095/?ref_=nv_sr_srsg_1_tt_4_nm_0_in_0_q_por%2520agua%2520abaixo" target="_blank">
+                    <img src="imgs/por-agua-a-baixo.jpg" alt="Por Água Abaixo">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Por Água Abaixo</strong> 
+                    <div class="nota">⭐ 6,6/10</div><br>
+                    <div class="subtitulo">2006 • Infantil/Comédia<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0414853/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520segredo%2520dos%2520animais" target="_blank">
+                    <img src="imgs/o-segredo-dos-animais.webp" alt="O Segredo dos Animais">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Segredo dos Animais</strong>
+                    <div class="nota">⭐ 5,6/10</div><br>
+                    <div class="subtitulo">2006 • Comédia/Aventura<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0317219/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_carros" target="_blank">
+                    <img src="imgs/carros.webp" alt="Carros">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                
+                    <strong class="titulo">Carros</strong> 
+                    <div class="nota">⭐ 7,3/10</div><br>
+                    <div class="subtitulo">2006 • Infantil/Comédia<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1772341/?ref_=nv_sr_srsg_0_tt_2_nm_0_in_0_q_detona%2520ralph" target="_blank">
+                    <img src="imgs/detona-ralph.jpeg" alt="Detona Ralph">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Detona Ralph</strong> 
+                    <div class="nota">⭐ 7,7/10</div><br>
+                    <div class="subtitulo">2012 • Infantil/Comédia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0351283/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_madagascar" target="_blank">
+                    <img src="imgs/madagascar.webp" alt="Madagascar">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Madagascar</strong> 
+                    <div class="nota">⭐ 6,9/10</div><br>
+                    <div class="subtitulo">2005 • Infantil/Comédia<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1049413/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_up%2520altas%2520aventuras" target="_blank">
+                    <img src="imgs/up.jpg" alt="Up: Altas Aventuras">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Up: Altas Aventuras</strong>
+                    <div class="nota">⭐ 8,3/10</div><br> 
+                    <div class="subtitulo">2009 • Infantil/Aventura<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0266543/?ref_=nv_sr_srsg_0_tt_2_nm_0_in_0_q_procurando%2520nemo" target="_blank">
+                    <img src="imgs/procurando-nemo.jpg" alt="Procurando Nemo">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Procurando Nemo</strong> 
+                    <div class="nota">⭐ 8,2/10</div><br> 
+                    <div class="subtitulo">2003 • Infantil/Aventura<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt1436562/?ref_=nv_sr_srsg_0_tt_4_nm_4_in_0_q_rio" target="_blank">
+                    <img src="imgs/rio.jpg" alt="Rio">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Rio</strong> 
+                    <div class="nota">⭐ 6,9/10</div><br> 
+                    <div class="subtitulo">2011 • Infantil/Aventura<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt0382932/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_ratatoui" target="_blank">
+                    <img src="imgs/ratatouille.jpg" alt="Ratatouille">
+
+                    <img src="imgs/livre.png" alt="Classificação Livre" class="classificacao-idade">
+                 
+                    <strong class="titulo">Ratatouille</strong> 
+                    <div class="nota">⭐ 8,1/10</div><br>
+                    <div class="subtitulo">2007 • Infantil/Comédia<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+    <div class="carrossel">
+    <h2>Documentários</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href="https://www.imdb.com/pt/title/tt10856726/?ref_=nv_sr_srsg_0_tt_1_nm_0_in_0_q_travis%2520scott%2520voando%2520alto" target="_blank">
+                    <img src="imgs/travis-scott.jpg" alt="Travis Scott: Voando Alto">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                
+                    <strong class="titulo">Travis Scott: Voando Alto</strong>
+                    <div class="nota">⭐ 6,3/10</div><br>
+                    <div class="subtitulo">2019 • Documentário/Musical<br><br></div>
+                </a>
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt33294894/?ref_=nv_sr_srsg_0_tt_1_nm_0_in_0_q_nba%25205%2520em%2520quadra" target="_blank">
+                    <img src="imgs/Starting-5.jpg" alt="NBA: 5 em Quadra">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">NBA: 5 em Quadra</strong> 
+                    <div class="nota">⭐ 7,2/10</div><br>
+                    <div class="subtitulo">2024 • Esportes<br><br></div> 
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt8420184/?ref_=nv_sr_srsg_0_tt_3_nm_0_in_0_q_arremesso%2520final" target="_blank">
+                    <img src="imgs/Arremesso-final.jpg" alt="Arremesso Final">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Arremesso Final</strong>
+                    <div class="nota">⭐ 9,0/10</div><br>
+                    <div class="subtitulo">2020 • Documentário<br><br></div>
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt22988228/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_racionais" target="_blank">
+                    <img src="imgs/racionais.webp" alt="Racionais">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                    
+                    <strong class="titulo">Racionais</strong> 
+                    <div class="nota">⭐ 8,2/10</div><br>
+                    <div class="subtitulo">2022 • Documentário/Musical<br><br></div> 
+                </a> 
+            </div> 
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt35400412/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_a%2520queda%2520de%2520p%2520diddy" target="_blank">
+                    <img src="imgs/a-queda-de-p-diddy.webp" alt="A Queda de P.Diddy">
+
+                    <img src="imgs/16.png" alt="Classificação 16 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">A Queda de P.Diddy</strong> 
+                    <div class="nota">⭐ 6,5/10</div><br>
+                    <div class="subtitulo">2025 • Documentário<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt16428640/?ref_=nv_sr_srsg_0_tt_1_nm_0_in_0_q_neymar%2520o%2520caos%2520perfeito" target="_blank">
+                    <img src="imgs/neymar.jpg" alt="Neymar - O Caos Perfeito">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Neymar - O Caos Perfeito</strong> 
+                    <div class="nota">⭐ 6,6/10</div><br>
+                    <div class="subtitulo">2022 • Documentário<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt22499548/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_brasil%25202002" target="_blank">
+                    <img src="imgs/brasil.jpg" alt="Brasil 2002 - Os Bastidores do Penta">
+                 
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+
+                    <strong class="titulo">Brasil 2002 - Os Bastidores do Penta</strong>
+                    <div class="nota">⭐ 7,3/10</div><br> 
+                    <div class="subtitulo">2022 • Documentário<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt21837726/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_o%2520time%2520da%2520" target="_blank">
+                    <img src="imgs/o-time-da-redencao.jpg" alt="O Time da Redenção">
+
+                    <img src="imgs/12.svg" alt="Classificação 12 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">O Time da Redenção</strong> 
+                    <div class="nota">⭐ 7,4/10</div><br> 
+                    <div class="subtitulo">2022 • Documentário/Esporte<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt8289930/?ref_=nv_sr_srsg_0_tt_4_nm_0_in_0_q_f1%2520dirigir" target="_blank">
+                    <img src="imgs/f1-dirigir-para-viver.png" alt="F1: Dirigir Para Viver">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">F1: Dirigir Para Viver</strong> 
+                    <div class="nota">⭐ 8,5/10</div><br> 
+                    <div class="subtitulo">2019 • Documentário<br><br></div>
+                </a> 
+            </div>
+
+            <div class="swiper-slide"> 
+                <a href="https://www.imdb.com/pt/title/tt36856278/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_desastre%2520total" target="_blank">
+                    <img src="imgs/travis-scott-2.webp" alt="Desastre Total: Festival Astroworld">
+
+                    <img src="imgs/14.png" alt="Classificação 14 Anos" class="classificacao-idade">
+                 
+                    <strong class="titulo">Desastre Total: Festival Astroworld</strong>
+                    <div class="nota">⭐ 6,7/10</div><br>  
+                    <div class="subtitulo">2025 • Documentário<br><br></div>
+                </a> 
+            </div>
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+  <script>
+    function toggleMenu(btn) {
+        btn.classList.toggle('open');
+        const menu = document.getElementById('menu');
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+    window.addEventListener('click', function(e) {
+        const btn = document.querySelector('.menu-btn');
+        const menu = document.getElementById('menu');
+        if (!btn.contains(e.target) && !menu.contains(e.target)) {
+            btn.classList.remove('open');
+            menu.style.display = 'none';
+        }
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    const swiperContainers = document.querySelectorAll('.swiper');
+
+    swiperContainers.forEach(swiperElement => {
+        new Swiper(swiperElement, {
+            slidesPerView: 1, 
+            spaceBetween: 10,
+            loop: true,
+            
+            breakpoints: {
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                },
+            },
+            
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+</script>
+</body>
+</html>
