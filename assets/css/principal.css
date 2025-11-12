@@ -226,17 +226,17 @@ footer {
 }
 
 .swiper-destaques .swiper-wrapper {
-    display: flex !important;
-    width: 100% !important;
+    display: flex;
+    width: 100%;
 } 
 
 .swiper-destaques .swiper-slide-destaques { 
     flex-shrink: 0;
-    width: 100% !important; 
+    width: 100%; 
     height: 100%;
     position: relative;
     z-index: 10;
-    margin-right: 0px !important; 
+    margin-right: 0px; 
     background-color: transparent; 
     border-radius: 0;
     padding: 0; 
@@ -285,10 +285,11 @@ footer {
 }
 
 .swiper-pagination-destaques {
-    position: absolute !important;
+    position: absolute;
     width: 100%;
-    bottom: 30px !important; 
+    bottom: 30px; 
     z-index: 999;
+    margin-left: 400px;
 }
 
 .swiper-pagination-destaques .swiper-pagination-bullet {
