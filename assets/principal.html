@@ -5,226 +5,10 @@
   <meta http-equiv="refresh" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="css/principal.css">
   <link rel="icon" href="imgs/meu_icone.png" type="image/png">
   <title>Streamo</title>
-  <style>
-    * { 
-        margin: 0; 
-        padding: 0; 
-        box-sizing: border-box; 
-    }
-
-    body {
-      background-color: #0f0f0f;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      line-height: 1.4;
-    }
-
-    a { 
-      text-decoration: none; 
-      color: inherit; 
-    }
-
-    a:hover { 
-      opacity: 0.8; 
-    }
-
-    .streamo {
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      position: relative;
-    }
-
-    .streamo img {
-      height: 50px;
-      margin-right: 670px;
-    }
-
-    .menu-btn {
-      width: 30px;
-      height: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    .menu-btn span {
-      display: block;
-      height: 4px;
-      background-color: #fff;
-      border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
-    }
-
-    .menu-btn.open span:nth-child(1) { 
-      transform: translateY(10px) rotate(45deg); 
-    }
-
-    .menu-btn.open span:nth-child(2) { 
-        opacity: 0; 
-    }
-
-    .menu-btn.open span:nth-child(3) { 
-        transform: translateY(-10px) rotate(-45deg); 
-    }
-
-    .menu {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      background: #1a1a1a;
-      border: 1px solid #555;
-      display: none;
-      flex-direction: column;
-      min-width: 150px;
-      border-radius: 5px;
-      z-index: 1000;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-      margin-right: 1330px;
-    }
-
-    .menu a {
-      padding: 12px 16px;
-      font-size: 1em;
-    }
-
-    .menu a:hover {
-      background: #333;
-    }
-
-    strong {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 1.1em;
-    }
-
-    .botao {
-      background-color: #444;
-      padding: 8px 12px;
-      border-radius: 5px;
-      color: #fff;
-      cursor: pointer;
-      border: none;
-      font-size: 0.9em;
-      transition: background 0.3s;
-    }
-
-    .botao:hover { 
-        background-color: #666; 
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 99;
-    }
-
-    footer {
-      text-align: center;
-      padding: 50px 0;
-    }
-
-    .carrossel {
-    margin: 40px 0;
-    }
-
-    .carrossel h2 {
-      font-size: 2em;
-      margin-bottom: 25px;
-      margin-left: 75px;
-      padding: 30px;
-      background-color: #0f0f0f;
-      border-left: 10px solid #3c3c3c;
-      border-radius: 5px 0 0 5px;
-    }
-
-    .swiper {
-      width: 90%;
-      height: auto;
-      margin: 0 auto; 
-      padding-bottom: 50px; 
-    }
-
-    .swiper-slide {
-    position: relative; 
-    text-align: center;
-    font-size: 18px;
-    background-color: #000000; 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center;
-    height: 450px; 
-    border-radius: 20px;
-  }
-
-  .classificacao-idade {
-    position: absolute; 
-    top: 5px;   
-    right: 5px; 
-    width: 40px;  
-    margin-top: 255px;
-    margin-right: 20px; 
-    z-index: 10; 
-    transition: none;
-  }
-
-  .swiper-slide img:not(.classificacao-idade) { 
-    width: 200px;
-    height: 290px;
-    display: block;
-    margin: 20px auto 10px;
-    transition: transform 0.3s;
-    border-radius: 5px;
-    z-index: 1; 
-    object-fit: cover; 
-}
-
-    .swiper-slide:hover { 
-        transform: scale(1.05); 
-        border-radius: 20px;
-    }
-
-  .swiper-slide strong {
-      min-height: 40px; 
-      margin-bottom: 5px;
-      font-size: 1em;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-      margin-top: 75px;
-      color: #e0e0e0;
-  }
-
-  .swiper-slide .botao {
-      display: block;
-      width: 90%;
-      margin: 5px auto;
-  }
-
-  .titulo {
-    font-size: larger;
-  }
-
-  .subtitulo {
-    font-size: small;
-  }
-
-  .nota {
-    color: #FFD700;
-    font-size: medium;
-  }
-  </style>
 </head>
 <body>
   <header>
@@ -239,7 +23,241 @@
       <a href="https://www.instagram.com/joohnyxxz?igsh=MTFoZGlheG5lMGZ1bw==" target="_blank">Meu Insta</a>
     </div>
   </header>
-    <div class="carrossel" style="margin-top: 150px;">
+    <div class="swiper swiper-destaques">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt6263850/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_deadpool" target="_blank">
+                    <img src="imgs/deadpool-wolverine-destaque.jpg" alt="Sonic 3 - O Filme">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Deadpool & Wolverine</h2>
+                        <div class="subtitulo">2024</div>
+                        <p>
+                            Deadpool recebe uma oferta da Autoridade de Variância Temporal para se juntar ao Universo Cinematográfico 
+                            Marvel, mas em vez disso recruta uma variante do Wolverine para salvar seu universo da extinção.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt22022452/?ref_=nv_sr_srsg_4_tt_8_nm_0_in_0_q_divertidamente" target="_blank">
+                    <img src="imgs/divertidamente-2-destaque.png" alt="Divertida Mente 2">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Divertida Mente 2</h2>
+                        <div class="subtitulo">2024</div>
+                        <p>
+                            Enquanto Riley tenta se adaptar à adolescência e às novas emoções, suas antigas emoções tentam se adaptar à 
+                            possibilidade de serem substituídas.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt18259086/?ref_=nv_sr_srsg_1_tt_7_nm_0_in_0_q_sonic" target="_blank">
+                    <img src="imgs/sonic-3-destaque.jpg" alt="Sonic 3 - O Filme">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Sonic 3 - O Filme</h2>
+                        <div class="subtitulo">2024</div>
+                        <p>
+                            Sonic, Knuckles e Tails se reúnem contra um novo e poderoso adversário, Shadow, um vilão misterioso com poderes 
+                            diferentes de tudo o que já enfrentaram antes. Com suas habilidades excepcionais, a Equipe Sonic busca uma aliança 
+                            improvável.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt20969586/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_thunderbol" target="_blank">
+                    <img src="imgs/thunderbolts.webp" alt="Thunderbolts">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Thunderbolts</h2>
+                        <div class="subtitulo">2025</div>
+                        <p>
+                            Depois de se verem presos em uma armadilha mortal, uma equipe não convencional de anti-heróis deve embarcar 
+                            em uma missão perigosa que os forçará a confrontar os cantos mais sombrios de seus passados.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt29644189/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_telefone%2520" target="_blank">
+                    <img src="imgs/telefone-preto-2.jpg" alt="O Telefone Preto 2">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: O Telefone Preto 2</h2>
+                        <div class="subtitulo">2025</div>
+                        <p>
+                            Enquanto Finn, de 17 anos, lida com a vida após seu cativeiro, sua irmã recebe ligações em seus sonhos do telefone 
+                            preto e tem visões perturbadoras de três meninos perseguidos no acampamento de Alpine Lake.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt5950044/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_superman" target="_blank">
+                    <img src="imgs/superman-destaque.jpg" alt="Superman">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Superman</h2>
+                        <div class="subtitulo">2025</div>
+                        <p>
+                            Segue o super-herói titular enquanto ele reconcilia sua herança com sua educação humana. Ele é a personificação da 
+                            verdade, da justiça e de um futuro melhor em um mundo que vê a bondade como algo antiquado.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt10676052/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_quarteto" target="_blank">
+                    <img src="imgs/quarteto-fantastico.jpg" alt="Quarteto Fantástico: Primeiros Passos">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Quarteto Fantástico: Primeiros Passos</h2>
+                        <div class="subtitulo">2025</div>
+                        <p>
+                            Forçados a equilibrar seus papéis como heróis e a força dos laços familiares, o Quarteto Fantástico deve defender a 
+                            Terra de um deus espacial voraz chamado Galactus e sua enigmática arauta, a Surfista Prateada.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt26743210/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_como%2520treinar" target="_blank">
+                    <img src="imgs/como-treinar-seu-dragao.jpg" alt="Como Treinar o Seu Dragão">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Como Treinar o Seu Dragão</h2>
+                        <div class="subtitulo">2025</div>
+                        <p>
+                            Quando uma ameaça coloca em perigo tanto vikings quanto dragões na ilha de Berk, a amizade entre Soluço, um viking 
+                            inventivo, e Banguela, um dragão Fúria da Noite, se torna a chave para ambas as espécies construírem um novo futuro 
+                            juntas.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt29355505/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_toy%2520story%2520" target="_blank">
+                    <img src="imgs/toy-story-5.jpg" alt="Toy Story 5">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Toy Story 5</h2>
+                        <div class="subtitulo">2026</div>
+                        <p>
+                            Buzz, Woody e Jessie enfrentam um desafio ao serem apresentados àquilo que é a obsessão das crianças hoje em dia: os eletrônicos.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt30825738/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_mandaloriano" target="_blank">
+                    <img src="imgs/mandaloriano-e-grogu.jpg" alt="O Mandaloriano e Grogu">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: O Mandaloriano e Grogu</h2>
+                        <div class="subtitulo">2026</div>
+                        <p>
+                            Outrora um caçador de recompensas solitário, o Mandaloriano Din Djarin e seu aprendiz Grogu embarcam em uma nova e 
+                            empolgante aventura de Guerra nas Estrelas.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt11378946/" target="_blank">
+                    <img src="imgs/michael.webp" alt="Michael">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Michael</h2>
+                        <div class="subtitulo">2026</div>
+                        <p>
+                            Filme biográfico sobre o rei do pop, Michael Jackson. Ele retratará o cantor desde seus primeiros dias 
+                            até sua trágica morte em 2009.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt21357150/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_vingadores" target="_blank">
+                    <img src="imgs/vingadores-5-destaque.jpg" alt="Vingadores: Doomsday">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Vingadores: Doomsday</h2>
+                        <div class="subtitulo">2026</div>
+                        <p>
+                            Enredo mantido em segredo.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt22084616/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_homem%2520aranha" target="_blank">
+                    <img src="imgs/homem-aranha-um-novo-dia.jpg" alt="Homem-Aranha: Um Novo Dia">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Homem-Aranha: Um Novo Dia</h2>
+                        <div class="subtitulo">2026</div>
+                        <p>
+                            Peter Parker tenta se concentrar na faculdade e deixar o Homem-Aranha para trás. Mas quando uma nova ameaça 
+                            surge, ele quebra sua promessa, veste o traje e se une a um aliado inesperado para protegê-los.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt32557122/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_angry%2520birds" target="_blank">
+                    <img src="imgs/angry-birds-filme-3.webp" alt="Angry Birds 3: O Filme">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Angry Birds 3: O Filme</h2>
+                        <div class="subtitulo">2026</div>
+                        <p>
+                            Junte-se a Red e Chuck para mais aventuras novas, divertidas e eletrizantes.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt6113186/?ref_=nv_sr_srsg_6_tt_8_nm_0_in_0_q_shrek" target="_blank">
+                    <img src="imgs/shrek-5.webp" alt="Shrek 5">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Shrek 5</h2>
+                        <div class="subtitulo">2027</div>
+                        <p>
+                            Enredo desconhecido.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt21361444/?ref_=nv_sr_srsg_9_tt_8_nm_0_in_0_q_vingadores" target="_blank">
+                    <img src="imgs/vingadores-6.jpg" alt="Vingadores: Guerras Secretas">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Vingadores: Guerras Secretas</h2>
+                        <div class="subtitulo">2027</div>
+                        <p>
+                            Enredo mantido em segredo.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt19850008/?ref_=nv_sr_srsg_11_tt_8_nm_0_in_0_q_batman" target="_blank">
+                    <img src="imgs/batman-2.jpg" alt="The Batman Part II">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: The Batman Part II</h2>
+                        <div class="subtitulo">2027</div>
+                        <p>
+                            Enredo mantido em segredo.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide swiper-slide-destaques">
+                <a href="https://www.imdb.com/pt/title/tt32561550/?ref_=nv_sr_srsg_5_tt_7_nm_1_in_0_q_supernova" target="_blank">
+                    <img src="imgs/godzilla-kong.jpg" alt="Godzilla e Kong: Supernova">
+                    <div class="texto">
+                        <h2 class="nome">Em destaque: Godzilla e Kong: Supernova</h2>
+                        <div class="subtitulo">2027</div>
+                        <p>
+                            Godzilla e Kong enfrentam uma ameaça cataclísmica.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    <div class="swiper-pagination-destaques"></div>
+    </div>
+    <div class="carrossel" style="margin-top: 50px;">
     <h2>Comédia</h2>
     <div class="swiper">
         <div class="swiper-wrapper">
@@ -2476,50 +2494,62 @@
         <div class="swiper-button-prev"></div>
     </div>
 </div>
-  <script>
-    function toggleMenu(btn) {
-        btn.classList.toggle('open');
-        const menu = document.getElementById('menu');
-        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    }
-    window.addEventListener('click', function(e) {
-        const btn = document.querySelector('.menu-btn');
-        const menu = document.getElementById('menu');
-        if (!btn.contains(e.target) && !menu.contains(e.target)) {
-            btn.classList.remove('open');
-            menu.style.display = 'none';
-        }
-    });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-    const swiperContainers = document.querySelectorAll('.swiper');
-
-    swiperContainers.forEach(swiperElement => {
-        new Swiper(swiperElement, {
-            slidesPerView: 1, 
-            spaceBetween: 10,
-            loop: true,
-            
-            breakpoints: {
-                640: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidesPerView: 5,
-                    spaceBetween: 30,
-                },
-            },
-            
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    });
-</script>
 </body>
+<script>
+    function toggleMenu(btn) {
+    btn.classList.toggle('open');
+    const menu = document.getElementById('menu');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
+
+window.addEventListener('click', function(e) {
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.getElementById('menu');
+
+    if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+        btn.classList.remove('open');
+        menu.style.display = 'none';
+    }
+});
+
+const destaquesSwiper = new Swiper('.swiper-destaques', {
+    slidesPerView: 1, 
+    loop: true,
+    speed: 800, 
+
+    autoplay: {
+        delay: 6000, 
+        disableOnInteraction: false, 
+    },
+    
+    pagination: {
+        el: '.swiper-pagination-destaques', 
+        clickable: true,
+    },
+});
+
+const containersFilmes = document.querySelectorAll('.carrossel .swiper');
+
+containersFilmes.forEach(swiperElement => {
+    new Swiper(swiperElement, {
+        slidesPerView: 1, 
+        spaceBetween: 10,
+        loop: true,
+        breakpoints: {
+            640: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+            },
+        },
+        navigation: {
+            nextEl: swiperElement.querySelector('.swiper-button-next'),
+            prevEl: swiperElement.querySelector('.swiper-button-prev'),
+        },
+    });
+});
+</script>
 </html>
